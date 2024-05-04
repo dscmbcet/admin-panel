@@ -1,8 +1,45 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
+import Loading from "./loading";
+import { Suspense } from "react";
+import { ThemeProvider } from "next-themes";
 
-const inter = Inter({ subsets: ["latin"] });
+const googleSans = localFont({
+  src: [
+    {
+      path: "./../assets/fonts/GoogleSans-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./../assets/fonts/GoogleSans-Medium.ttf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./../assets/fonts/GoogleSans-Bold.ttf",
+      weight: "700",
+      style: "normal",
+    },
+
+    {
+      path: "./../assets/fonts/GoogleSans-Italic.ttf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./../assets/fonts/GoogleSans-MediumItalic.ttf",
+      weight: "500",
+      style: "italic",
+    },
+    {
+      path: "./../assets/fonts/GoogleSans-BoldItalic.ttf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
+});
 
 export const metadata: Metadata = {
   title: "Admin Panel",
@@ -15,8 +52,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" suppressHydrationWarning>
+      <body className={googleSans.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Suspense fallback={<Loading />}>
+            <main className="flex flex-col justify-center overflow-x-hidden relative">
+              {children}
+            </main>
+          </Suspense>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
