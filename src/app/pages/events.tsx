@@ -58,7 +58,8 @@ const Events: React.FC = () => {
         }
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
         try {
             const db = getFirestore(firebase_app);
             const eventRef = doc(db, 'events', selectedEvent.id);
