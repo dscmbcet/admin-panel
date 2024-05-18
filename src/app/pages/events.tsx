@@ -37,15 +37,25 @@ const Events: React.FC = () => {
     const handleEdit = (event: any) => {
         setEditMode(true);
         setSelectedEvent(event);
-        setEditedEvent({ ...event });
+        setEditedEvent({
+            ...event,
+            category: Array.isArray(event.category) ? event.category : [],
+        });
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
-        setEditedEvent((prevState: any) => ({
-            ...prevState,
-            [name]: value
-        }));
+        if (name === 'category') {
+            setEditedEvent((prevState: any) => ({
+                ...prevState,
+                [name]: value.split(',').map(item => item.trim()),
+            }));
+        } else {
+            setEditedEvent((prevState: any) => ({
+                ...prevState,
+                [name]: value,
+            }));
+        }
     };
 
     const handleSubmit = async () => {
@@ -99,8 +109,10 @@ const Events: React.FC = () => {
                             </div>
                             <p><span className="font-bold">Status:</span> {event.status}</p>
                             <p><span className="font-bold">Type:</span> {event.type}</p>
-                            <p><span className="font-bold">Categories:</span> {event.category.join(', ')}</p>
-                        </div>
+                            <p>
+                                <span className="font-bold">Categories:</span> {Array.isArray(event.category) ? event.category.join(', ') : 'No categories available'}
+                            </p>                       
+                         </div>
                         <button onClick={() => handleEdit(event)} className="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded-md hover:bg-blue-600">Edit</button>
                     </div>
                 ))}
@@ -181,14 +193,14 @@ const Events: React.FC = () => {
                                 />
                             </label>
                             <label className="block mb-4">
-                                <span className="font-bold">Categories:</span>
-                                <input
-                                    type="text"
-                                    name="category"
-                                    value={editedEvent.category.join(', ')}
-                                    onChange={handleChange}
-                                    className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                                />
+                               <span className="font-bold">Categories:</span>
+                                    <input
+                                        type="text"
+                                        name="category"
+                                        value={Array.isArray(editedEvent.category) ? editedEvent.category.join(', ') : ''}
+                                        onChange={handleChange}
+                                        className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+                                    />
                             </label>
                             <div className="flex justify-end">
                                 <button type="submit" className="mr-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600">Save</button>

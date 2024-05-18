@@ -1,5 +1,4 @@
-import Events from "./pages/events";"../app/pages/events"
-
+import Events from "./pages/events";
 export default function Home() {
   return (
     <>
