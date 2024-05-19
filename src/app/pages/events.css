@@ -4,24 +4,21 @@
 }
 
 .image-url-container {
-  flex-grow: 1; 
+  flex-grow: 1;
 }
 
 .url_fit {
   width: 80%;
-  overflow-wrap: break-word; 
+  overflow-wrap: break-word;
 }
 .edit-form {
   width: 80%;
   max-width: 600px;
   overflow-y: auto;
-  max-height: 80vh; 
+  max-height: 80vh;
 }
-
 
 .form-input {
   width: 100%;
-  word-wrap: break-word; 
+  word-wrap: break-word;
 }
-
-
