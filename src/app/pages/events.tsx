@@ -6,6 +6,7 @@ import {
   getFirestore,
   doc,
   updateDoc,
+  setDoc,
 } from "firebase/firestore";
 import firebase_app from "../../lib/firebase/config";
 import "./events.css";
@@ -45,6 +46,7 @@ const Events: React.FC = () => {
   const [editMode, setEditMode] = useState<boolean>(false);
   const [selectedEvent, setSelectedEvent] = useState<any>(null);
   const [editedEvent, setEditedEvent] = useState<any>(null);
+  const [isNewEvent, setIsNewEvent] = useState(false);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -67,7 +69,8 @@ const Events: React.FC = () => {
     fetchEvents();
   }, []);
 
-  const handleEdit = (event: any) => {
+  const handleEdit = (event: any, isNew: boolean) => {
+    setIsNewEvent(isNew);
     setEditMode(true);
     setSelectedEvent(event);
     setEditedEvent({
@@ -100,9 +103,19 @@ const Events: React.FC = () => {
     e.preventDefault();
     try {
       const db = getFirestore(firebase_app);
+      const newEventId = `event-${selectedEvent.name}-123`;
+      const { id, ...eventDetails } = selectedEvent;
+      if (isNewEvent === true)
+        setSelectedEvent({
+          ...eventDetails,
+          id: newEventId,
+        });
+
       const eventRef = doc(db, "events", selectedEvent.id);
       // Update event with new data
-      await updateDoc(eventRef, editedEvent);
+      isNewEvent === true
+        ? await setDoc(eventRef, editedEvent)
+        : await updateDoc(eventRef, editedEvent);
       // Fetch updated events
       const updatedEvents = events.map((event) =>
         event.id === selectedEvent.id ? editedEvent : event
@@ -123,6 +136,29 @@ const Events: React.FC = () => {
         return val.charAt(0).toUpperCase() + val.substr(1).toLowerCase();
       })
       .join(" ");
+  }
+
+  function createTestEvent(): Event {
+    const event: Event = {
+      schedule: [],
+      description: "",
+      skills: {},
+      prerequisites: {},
+      mentors: {},
+      gallery: [],
+      testimonials: {},
+      sponsors: {},
+      displayShedule: false,
+      id: "test",
+      name: "",
+      imageURL: "",
+      description_short: "",
+      start_date: "",
+      status: EventStatus.Upcoming,
+      category: [],
+      type: EventType.Virtual,
+    };
+    return event;
   }
 
   const handleCancel = () => {
@@ -257,7 +293,7 @@ const Events: React.FC = () => {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => handleEdit(event)}>
+              <DropdownMenuItem onClick={() => handleEdit(event, false)}>
                 Edit
               </DropdownMenuItem>
               <DropdownMenuItem
@@ -277,6 +313,9 @@ const Events: React.FC = () => {
   return (
     <div className="container mx-auto mt-8">
       <h1 className="text-3xl font-bold mb-4">Events</h1>
+      <Button onClick={() => handleEdit(createTestEvent(), true)}>
+        Create Event
+      </Button>
       <DataTable columns={columns} data={events} />
 
       {editMode && selectedEvent && (

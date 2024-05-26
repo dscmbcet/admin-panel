@@ -1,0 +1,1184 @@
+[debug] [2024-05-26T10:41:58.559Z] ----------------------------------------------------------------------
+[debug] [2024-05-26T10:41:58.561Z] Command:       /usr/local/bin/node /Users/navaneethvenu/Documents/Projects/admin-panel/node_modules/.bin/firebase emulators:start
+[debug] [2024-05-26T10:41:58.561Z] CLI Version:   13.9.0
+[debug] [2024-05-26T10:41:58.562Z] Platform:      darwin
+[debug] [2024-05-26T10:41:58.562Z] Node Version:  v20.11.0
+[debug] [2024-05-26T10:41:58.562Z] Time:          Sun May 26 2024 16:11:58 GMT+0530 (India Standard Time)
+[debug] [2024-05-26T10:41:58.562Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-05-26T10:41:58.563Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2024-05-26T10:41:58.638Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-05-26T10:41:58.638Z] > authorizing via signed-in user (nauaneeth@gmail.com)
+[debug] [2024-05-26T10:41:58.742Z] java version "22.0.1" 2024-04-16
+
+[debug] [2024-05-26T10:41:58.742Z] Java(TM) SE Runtime Environment (build 22.0.1+8-16)
+Java HotSpot(TM) 64-Bit Server VM (build 22.0.1+8-16, mixed mode, sharing)
+
+[debug] [2024-05-26T10:41:58.748Z] Parsed Java major version: 22
+[info] i  emulators: Starting emulators: auth, functions, firestore, database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: auth, functions, firestore, database"}}
+[debug] [2024-05-26T10:41:59.235Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-26T10:41:59.235Z] [auth] Authentication Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-26T10:41:59.235Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-26T10:41:59.235Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-26T10:41:59.235Z] [database] Database Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2024-05-26T10:41:59.235Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"auth":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":8080}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"database":[{"address":"127.0.0.1","family":"IPv4","port":9000}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2024-05-26T10:41:59.237Z] [hub] writing locator at /var/folders/hp/pd9d3qxd3mgb658ph61p01980000gn/T/hub-website-3-0-fd8ac.json
+[warn] ⚠  functions: The functions emulator is configured but there is no functions source directory. Have you run firebase init functions? {"metadata":{"emulator":{"name":"functions"},"message":"The functions emulator is configured but there is no functions source directory. Have you run \u001b[1mfirebase init functions\u001b[22m?"}}
+[warn] ⚠  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
+[warn] ⚠  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
+[warn] ⚠  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2024-05-26T10:41:59.244Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-05-26T10:41:59.245Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2024-05-26T10:41:59.245Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","/Users/navaneethvenu/.cache/firebase/emulators/cloud-firestore-emulator-v1.19.6.jar","--host","127.0.0.1","--port",8080,"--websocket_port",9150,"--project_id","website-3-0-fd8ac","--single_project_mode",true],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"/Users/navaneethvenu/.cache/firebase/emulators/cloud-firestore-emulator-v1.19.6.jar\",\"--host\",\"127.0.0.1\",\"--port\",8080,\"--websocket_port\",9150,\"--project_id\",\"website-3-0-fd8ac\",\"--single_project_mode\",true],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2024-05-26T10:41:59.606Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2024-05-26T10:41:59.607Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2024-05-26T10:42:00.025Z] May 26, 2024 4:12:00 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:12:00 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\nINFO: Started WebSocket server on ws://127.0.0.1:9150\n"}}
+[debug] [2024-05-26T10:42:00.038Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2024-05-26T10:42:00.038Z] 127.0.0.1:8080
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080
+
+If you are running a Firestore in Datastore Mode project, run:
+
+   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080
+
+Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:8080\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:8080\n\nIf you are running a Firestore in Datastore Mode project, run:\n\n   export DATASTORE_EMULATOR_HOST=127.0.0.1:8080\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\nDev App Server is now running.\n\n"}}
+[info] ✔  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2024-05-26T10:42:00.057Z] > refreshing access token with scopes: []
+[debug] [2024-05-26T10:42:00.057Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2024-05-26T10:42:00.057Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-26T10:42:00.328Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2024-05-26T10:42:00.328Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2024-05-26T10:42:00.340Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/website-3-0-fd8ac [none]
+[debug] [2024-05-26T10:42:00.849Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/website-3-0-fd8ac 200
+[debug] [2024-05-26T10:42:00.850Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/website-3-0-fd8ac {"projectId":"website-3-0-fd8ac","projectNumber":"475993812104","displayName":"website-3-0","name":"projects/website-3-0-fd8ac","resources":{"hostingSite":"website-3-0-fd8ac"},"state":"ACTIVE","etag":"1_2deb179b-18e5-4a9a-a15d-bd39114897fa"}
+[debug] [2024-05-26T10:42:00.850Z] database rules config:  []
+[warn] ⚠  database: Did not find a Realtime Database rules file specified in a firebase.json config file. The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"database"},"message":"Did not find a Realtime Database rules file specified in a firebase.json config file. The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2024-05-26T10:42:00.851Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2024-05-26T10:42:00.851Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-05-26T10:42:00.851Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2024-05-26T10:42:00.851Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","/Users/navaneethvenu/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar","--host","127.0.0.1","--port",9000,"--single_project_mode","Warning"],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host","single_project_mode"],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"/Users/navaneethvenu/.cache/firebase/emulators/firebase-database-emulator-v4.11.2.jar\",\"--host\",\"127.0.0.1\",\"--port\",9000,\"--single_project_mode\",\"Warning\"],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2024-05-26T10:42:01.520Z] 16:12:01.519 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"16:12:01.519 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\n"}}
+[debug] [2024-05-26T10:42:01.609Z] 16:12:01.609 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"16:12:01.609 [main] INFO com.firebase.server.forge.App$ - Listening at 127.0.0.1:9000\n"}}
+[debug] [2024-05-26T10:42:04.751Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2024-05-26T10:42:04.751Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2024-05-26T10:42:04.751Z] Starting Emulator UI with command {"binary":"node","args":["/Users/navaneethvenu/.cache/firebase/emulators/ui-v1.11.8/server/server.mjs"],"optionalArgs":[],"joinArgs":false,"shell":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"/Users/navaneethvenu/.cache/firebase/emulators/ui-v1.11.8/server/server.mjs\"],\"optionalArgs\":[],\"joinArgs\":false,\"shell\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2024-05-26T10:42:04.837Z] Web / API server started at 127.0.0.1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at 127.0.0.1:4000\n"}}
+[debug] [2024-05-26T10:42:04.837Z] Web / API server started at ::1:4000
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at ::1:4000\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────────┬──────────────────────────────────┬─────────────────────────────────┐
+│ Emulator       │ Host:Port                        │ View in Emulator UI             │
+├────────────────┼──────────────────────────────────┼─────────────────────────────────┤
+│ Authentication │ 127.0.0.1:9099                   │ http://127.0.0.1:4000/auth      │
+├────────────────┼──────────────────────────────────┼─────────────────────────────────┤
+│ Functions      │ Failed to initialize (see above) │                                 │
+├────────────────┼──────────────────────────────────┼─────────────────────────────────┤
+│ Firestore      │ 127.0.0.1:8080                   │ http://127.0.0.1:4000/firestore │
+├────────────────┼──────────────────────────────────┼─────────────────────────────────┤
+│ Database       │ 127.0.0.1:9000                   │ http://127.0.0.1:4000/database  │
+└────────────────┴──────────────────────────────────┴─────────────────────────────────┘
+  Emulator Hub running at 127.0.0.1:4400
+  Other reserved ports: 4500, 9150
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2024-05-26T10:42:50.953Z] May 26, 2024 4:12:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:12:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:42:51.436Z] May 26, 2024 4:12:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:12:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:42:51.449Z] May 26, 2024 4:12:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:12:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:43:26.062Z] May 26, 2024 4:13:26 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:26 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:43:34.491Z] May 26, 2024 4:13:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:34 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:43:34.501Z] May 26, 2024 4:13:34 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:34 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:43:40.312Z] May 26, 2024 4:13:40 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:40 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:43:40.323Z] May 26, 2024 4:13:40 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:40 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:43:51.466Z] May 26, 2024 4:13:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:43:51.856Z] May 26, 2024 4:13:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:51 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:43:51.866Z] May 26, 2024 4:13:51 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:51 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2024-05-26T10:43:53.895Z] May 26, 2024 4:13:53 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:53 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:43:53.906Z] May 26, 2024 4:13:53 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:53 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:43:59.975Z] May 26, 2024 4:13:59 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:13:59 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:44:00.008Z] May 26, 2024 4:14:00 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:00 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:44:07.018Z] May 26, 2024 4:14:07 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:07 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:44:07.034Z] May 26, 2024 4:14:07 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:07 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:44:08.162Z] May 26, 2024 4:14:08 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:08 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:44:08.172Z] May 26, 2024 4:14:08 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:08 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:44:27.928Z] May 26, 2024 4:14:27 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:27 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:44:27.942Z] May 26, 2024 4:14:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:27 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:44:28.011Z] May 26, 2024 4:14:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:44:32.932Z] May 26, 2024 4:14:32 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:32 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:44:37.915Z] May 26, 2024 4:14:37 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:37 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:44:37.928Z] May 26, 2024 4:14:37 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:37 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:44:41.358Z] May 26, 2024 4:14:41 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:41 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:44:41.369Z] May 26, 2024 4:14:41 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:41 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:44:57.320Z] May 26, 2024 4:14:57 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:14:57 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:45:02.884Z] May 26, 2024 4:15:02 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:15:02 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:45:10.234Z] May 26, 2024 4:15:10 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:15:10 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:45:10.246Z] May 26, 2024 4:15:10 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:15:10 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:45:19.033Z] May 26, 2024 4:15:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:15:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:45:19.063Z] May 26, 2024 4:15:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed
+INFO: Websocket client disconnected
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:15:19 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler channelClosed\nINFO: Websocket client disconnected\n"}}
+[debug] [2024-05-26T10:45:39.471Z] May 26, 2024 4:15:39 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel
+INFO: Connected to new websocket client
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:15:39 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketChannelHandler initChannel\nINFO: Connected to new websocket client\n"}}
+[debug] [2024-05-26T10:45:39.476Z] May 26, 2024 4:15:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:15:39 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:18.604Z] May 26, 2024 4:16:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:18.627Z] May 26, 2024 4:16:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:18.633Z] May 26, 2024 4:16:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:20.918Z] May 26, 2024 4:16:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:20.930Z] May 26, 2024 4:16:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:20.972Z] May 26, 2024 4:16:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:30.590Z] May 26, 2024 4:16:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:30.604Z] May 26, 2024 4:16:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:46:30.612Z] May 26, 2024 4:16:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:16:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:47:20.997Z] May 26, 2024 4:17:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:17:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:47:30.633Z] May 26, 2024 4:17:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:17:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:47:30.853Z] May 26, 2024 4:17:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:17:30 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:47:30.861Z] May 26, 2024 4:17:30 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:17:30 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2024-05-26T10:48:04.365Z] May 26, 2024 4:18:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:48:04.365Z] May 26, 2024 4:18:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:48:04.366Z] May 26, 2024 4:18:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:04 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:48:32.892Z] May 26, 2024 4:18:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:48:44.725Z] May 26, 2024 4:18:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:44 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:48:44.726Z] May 26, 2024 4:18:44 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:44 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:44.730Z] May 26, 2024 4:18:44 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:44 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:47.055Z] May 26, 2024 4:18:47 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:47 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:47.057Z] May 26, 2024 4:18:47 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:47 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:49.185Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:49.186Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:49.272Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:49.274Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:49.448Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:49.449Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:49.674Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:49.675Z] May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:49 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:50.492Z] May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:50.493Z] May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:50.665Z] May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:50.666Z] May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:50 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:51.860Z] May 26, 2024 4:18:51 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:51 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:51.862Z] May 26, 2024 4:18:51 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:51 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:53.092Z] May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:53.094Z] May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:53.364Z] May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:53.366Z] May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:53.578Z] May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:53.579Z] May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:53 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:54.492Z] May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:54.493Z] May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:54.975Z] May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:54.977Z] May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:54 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:56.663Z] May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:56.664Z] May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:56.772Z] May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:56.773Z] May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:56.905Z] May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:56.906Z] May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:56 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:57.050Z] May 26, 2024 4:18:57 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:57 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:57.052Z] May 26, 2024 4:18:57 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:57 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:48:59.665Z] May 26, 2024 4:18:59 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:59 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:48:59.667Z] May 26, 2024 4:18:59 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:18:59 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:01.031Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:01.033Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:01.223Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:01.225Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:01.505Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:01.506Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:01.694Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:01.695Z] May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:01 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:02.201Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:02.203Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:02.324Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:02.326Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:02.516Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:02.518Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:02.617Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:02.619Z] May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:02 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:03.034Z] May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:03.334Z] May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:03.336Z] May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:03.965Z] May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:03.966Z] May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:04.192Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:04.194Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:04.359Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:04.360Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:04.609Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:04.610Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:04.730Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:04.732Z] May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:04 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:09.279Z] May 26, 2024 4:19:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:09 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:09.279Z] May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:09.280Z] May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:09.851Z] May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:09.852Z] May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:09.964Z] May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:09.966Z] May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:09 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:11.580Z] May 26, 2024 4:19:11 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:11 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:11.582Z] May 26, 2024 4:19:11 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:11 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:12.486Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:12.487Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:12.648Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:12.649Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:12.806Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:12.807Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:12.960Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:12.962Z] May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:12 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:13.246Z] May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:13.248Z] May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:13.429Z] May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:13.430Z] May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:13.579Z] May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:13.581Z] May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:13 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:14.865Z] May 26, 2024 4:19:14 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:14 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:14.866Z] May 26, 2024 4:19:14 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:14 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:15.341Z] May 26, 2024 4:19:15 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:15 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:15.342Z] May 26, 2024 4:19:15 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:15 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:19.303Z] May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:19.304Z] May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:19.555Z] May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:19.556Z] May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:19.668Z] May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:19.669Z] May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:19 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:21.039Z] May 26, 2024 4:19:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:21.282Z] May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:21.284Z] May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:21.965Z] May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:21.966Z] May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:21 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:28.397Z] May 26, 2024 4:19:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:28 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:28.398Z] May 26, 2024 4:19:28 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:28 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:28.401Z] May 26, 2024 4:19:28 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:28 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:30.677Z] May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:30.678Z] May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:30.876Z] May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:30.877Z] May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:30 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:31.024Z] May 26, 2024 4:19:31 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:31 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:31.025Z] May 26, 2024 4:19:31 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:31 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:33.037Z] May 26, 2024 4:19:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:34.072Z] May 26, 2024 4:19:34 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/completions
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:34 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/completions\n"}}
+[debug] [2024-05-26T10:49:34.074Z] May 26, 2024 4:19:34 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:34 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:49:46.199Z] May 26, 2024 4:19:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:46.211Z] May 26, 2024 4:19:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:46.218Z] May 26, 2024 4:19:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:46 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:50.016Z] May 26, 2024 4:19:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:50.028Z] May 26, 2024 4:19:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:49:50.036Z] May 26, 2024 4:19:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:19:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:03.047Z] May 26, 2024 4:20:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:03.048Z] May 26, 2024 4:20:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:50:16.248Z] May 26, 2024 4:20:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:16 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:17.573Z] May 26, 2024 4:20:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:17.585Z] May 26, 2024 4:20:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:17.594Z] May 26, 2024 4:20:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:20.495Z] May 26, 2024 4:20:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:20.496Z] May 26, 2024 4:20:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:20.496Z] May 26, 2024 4:20:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:20 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:33.052Z] May 26, 2024 4:20:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:33.053Z] May 26, 2024 4:20:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:50:50.053Z] May 26, 2024 4:20:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:50.851Z] May 26, 2024 4:20:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:50 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:50:50.854Z] May 26, 2024 4:20:50 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:20:50 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreListenHandler onClose\nINFO: channel closed\n"}}
+[debug] [2024-05-26T10:51:03.054Z] May 26, 2024 4:21:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:21:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:51:03.056Z] May 26, 2024 4:21:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:21:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:51:17.640Z] May 26, 2024 4:21:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:21:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:51:17.854Z] May 26, 2024 4:21:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:21:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:51:17.859Z] May 26, 2024 4:21:17 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose
+INFO: channel closed
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:21:17 PM com.google.cloud.datastore.emulator.firestore.webchannel.FirestoreV1WebChannelAdapter$FirestoreWriteHandler onClose\nINFO: channel closed\n"}}
+[debug] [2024-05-26T10:51:33.055Z] May 26, 2024 4:21:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:21:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:51:33.056Z] May 26, 2024 4:21:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:21:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:52:03.055Z] May 26, 2024 4:22:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:22:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:52:03.055Z] May 26, 2024 4:22:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:22:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:52:32.775Z] May 26, 2024 4:22:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:22:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:52:33.055Z] May 26, 2024 4:22:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:22:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:52:33.056Z] May 26, 2024 4:22:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:22:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:53:03.078Z] May 26, 2024 4:23:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:23:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:53:03.079Z] May 26, 2024 4:23:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:23:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:53:32.815Z] May 26, 2024 4:23:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:23:32 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:53:33.080Z] May 26, 2024 4:23:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:23:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:53:33.081Z] May 26, 2024 4:23:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:23:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:53:38.093Z] May 26, 2024 4:23:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:23:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:53:38.094Z] May 26, 2024 4:23:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+May 26, 2024 4:23:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:23:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\nMay 26, 2024 4:23:38 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:54:03.084Z] May 26, 2024 4:24:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:24:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:54:03.086Z] May 26, 2024 4:24:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:24:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:54:33.085Z] May 26, 2024 4:24:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:24:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:54:33.086Z] May 26, 2024 4:24:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:24:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:55:03.088Z] May 26, 2024 4:25:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:25:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:55:03.089Z] May 26, 2024 4:25:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:25:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:55:17.892Z] May 26, 2024 4:25:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:25:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:55:33.088Z] May 26, 2024 4:25:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:25:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:55:33.089Z] May 26, 2024 4:25:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:25:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:56:03.088Z] May 26, 2024 4:26:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:26:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:56:03.089Z] May 26, 2024 4:26:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:26:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:56:17.917Z] May 26, 2024 4:26:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:26:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:56:33.089Z] May 26, 2024 4:26:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:26:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:56:33.090Z] May 26, 2024 4:26:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:26:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:57:03.093Z] May 26, 2024 4:27:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:27:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:57:03.094Z] May 26, 2024 4:27:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:27:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:57:17.940Z] May 26, 2024 4:27:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:27:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:57:33.094Z] May 26, 2024 4:27:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:27:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:57:33.096Z] May 26, 2024 4:27:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:27:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:58:03.094Z] May 26, 2024 4:28:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:28:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:58:03.095Z] May 26, 2024 4:28:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:28:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:58:17.963Z] May 26, 2024 4:28:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:28:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:58:33.095Z] May 26, 2024 4:28:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:28:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:58:33.095Z] May 26, 2024 4:28:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:28:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:59:03.098Z] May 26, 2024 4:29:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:29:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:59:03.099Z] May 26, 2024 4:29:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:29:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T10:59:17.986Z] May 26, 2024 4:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:29:17 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:59:33.104Z] May 26, 2024 4:29:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:29:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T10:59:33.105Z] May 26, 2024 4:29:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:29:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:00:03.104Z] May 26, 2024 4:30:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:30:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:00:03.105Z] May 26, 2024 4:30:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:30:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:00:18.013Z] May 26, 2024 4:30:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:30:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:00:33.105Z] May 26, 2024 4:30:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:30:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:00:33.106Z] May 26, 2024 4:30:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:30:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:01:03.109Z] May 26, 2024 4:31:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:31:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:01:03.110Z] May 26, 2024 4:31:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:31:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:01:18.038Z] May 26, 2024 4:31:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:31:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:01:33.109Z] May 26, 2024 4:31:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:31:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:01:33.110Z] May 26, 2024 4:31:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:31:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:02:03.110Z] May 26, 2024 4:32:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:32:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:02:03.111Z] May 26, 2024 4:32:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:32:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:02:18.061Z] May 26, 2024 4:32:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:32:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:02:33.111Z] May 26, 2024 4:32:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:32:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:02:33.112Z] May 26, 2024 4:32:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:32:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:03:03.114Z] May 26, 2024 4:33:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:33:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:03:03.116Z] May 26, 2024 4:33:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:33:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:03:18.080Z] May 26, 2024 4:33:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:33:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:03:33.116Z] May 26, 2024 4:33:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:33:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:03:33.117Z] May 26, 2024 4:33:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:33:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:04:03.116Z] May 26, 2024 4:34:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:34:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:04:03.117Z] May 26, 2024 4:34:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:34:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:04:03.194Z] May 26, 2024 4:34:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:34:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:04:33.116Z] May 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:04:33.117Z] May 26, 2024 4:34:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:34:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:04:33.893Z] May 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:04:33.894Z] May 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+May 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\nMay 26, 2024 4:34:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:05:03.120Z] May 26, 2024 4:35:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:35:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:05:03.122Z] May 26, 2024 4:35:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:35:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:05:33.121Z] May 26, 2024 4:35:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:35:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:05:33.122Z] May 26, 2024 4:35:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:35:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:06:03.122Z] May 26, 2024 4:36:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:36:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:06:03.123Z] May 26, 2024 4:36:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:36:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:06:03.234Z] May 26, 2024 4:36:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:36:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:06:33.123Z] May 26, 2024 4:36:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:36:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:06:33.124Z] May 26, 2024 4:36:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:36:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:07:03.125Z] May 26, 2024 4:37:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:37:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:07:03.126Z] May 26, 2024 4:37:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:37:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:07:03.256Z] May 26, 2024 4:37:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:37:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:07:33.127Z] May 26, 2024 4:37:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:37:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:07:33.128Z] May 26, 2024 4:37:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:37:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:08:03.128Z] May 26, 2024 4:38:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:38:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:08:03.129Z] May 26, 2024 4:38:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:38:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:08:03.274Z] May 26, 2024 4:38:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:38:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:08:33.128Z] May 26, 2024 4:38:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:38:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:08:33.129Z] May 26, 2024 4:38:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:38:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:09:03.144Z] May 26, 2024 4:39:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:39:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:09:03.145Z] May 26, 2024 4:39:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:39:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:09:03.305Z] May 26, 2024 4:39:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:39:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:09:33.148Z] May 26, 2024 4:39:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:39:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:09:33.149Z] May 26, 2024 4:39:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:39:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:10:03.148Z] May 26, 2024 4:40:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:40:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:10:03.149Z] May 26, 2024 4:40:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:40:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:10:03.328Z] May 26, 2024 4:40:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:40:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:10:33.150Z] May 26, 2024 4:40:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:40:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:10:33.151Z] May 26, 2024 4:40:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:40:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:11:03.155Z] May 26, 2024 4:41:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:41:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:11:03.156Z] May 26, 2024 4:41:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:41:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:11:03.348Z] May 26, 2024 4:41:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:41:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:11:33.159Z] May 26, 2024 4:41:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:41:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:11:33.160Z] May 26, 2024 4:41:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:41:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:12:03.160Z] May 26, 2024 4:42:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:42:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:12:03.161Z] May 26, 2024 4:42:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:42:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:12:03.370Z] May 26, 2024 4:42:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:42:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:12:33.160Z] May 26, 2024 4:42:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:42:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:12:33.160Z] May 26, 2024 4:42:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:42:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:13:03.159Z] May 26, 2024 4:43:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:43:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:13:03.160Z] May 26, 2024 4:43:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:43:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:13:03.391Z] May 26, 2024 4:43:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:43:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:13:33.165Z] May 26, 2024 4:43:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:43:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:13:33.166Z] May 26, 2024 4:43:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:43:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:14:03.169Z] May 26, 2024 4:44:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:44:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:14:03.170Z] May 26, 2024 4:44:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:44:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:14:03.416Z] May 26, 2024 4:44:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:44:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:14:33.171Z] May 26, 2024 4:44:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:44:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:14:33.171Z] May 26, 2024 4:44:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:44:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:15:03.173Z] May 26, 2024 4:45:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:45:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:15:03.174Z] May 26, 2024 4:45:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:45:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:15:03.442Z] May 26, 2024 4:45:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:45:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:15:33.177Z] May 26, 2024 4:45:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:45:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:15:33.178Z] May 26, 2024 4:45:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:45:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:16:03.179Z] May 26, 2024 4:46:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:46:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:16:03.180Z] May 26, 2024 4:46:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:46:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:16:03.471Z] May 26, 2024 4:46:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:46:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:16:33.182Z] May 26, 2024 4:46:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:46:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:16:33.183Z] May 26, 2024 4:46:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:46:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:17:03.185Z] May 26, 2024 4:47:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:47:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:17:03.186Z] May 26, 2024 4:47:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:47:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:17:03.499Z] May 26, 2024 4:47:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:47:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:17:33.188Z] May 26, 2024 4:47:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:47:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:17:33.189Z] May 26, 2024 4:47:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:47:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:18:03.188Z] May 26, 2024 4:48:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:48:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:18:03.189Z] May 26, 2024 4:48:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:48:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:18:03.526Z] May 26, 2024 4:48:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:48:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:18:25.994Z] May 26, 2024 4:48:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+May 26, 2024 4:48:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:48:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\nMay 26, 2024 4:48:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:18:25.994Z] May 26, 2024 4:48:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:48:25 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:18:33.189Z] May 26, 2024 4:48:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:48:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:18:33.190Z] May 26, 2024 4:48:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:48:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:19:03.187Z] May 26, 2024 4:49:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:49:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:19:03.187Z] May 26, 2024 4:49:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:49:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:19:18.641Z] May 26, 2024 4:49:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:49:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:19:33.193Z] May 26, 2024 4:49:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:49:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:19:33.194Z] May 26, 2024 4:49:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:49:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:20:03.194Z] May 26, 2024 4:50:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:50:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:20:03.194Z] May 26, 2024 4:50:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:50:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:20:18.662Z] May 26, 2024 4:50:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:50:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:20:33.195Z] May 26, 2024 4:50:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:50:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:20:33.195Z] May 26, 2024 4:50:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:50:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:21:03.195Z] May 26, 2024 4:51:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:51:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:21:03.196Z] May 26, 2024 4:51:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:51:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:21:18.676Z] May 26, 2024 4:51:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:51:18 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:21:21.759Z] May 26, 2024 4:51:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:51:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:21:21.760Z] May 26, 2024 4:51:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+May 26, 2024 4:51:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:51:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\nMay 26, 2024 4:51:21 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:21:33.202Z] May 26, 2024 4:51:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:51:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:21:33.203Z] May 26, 2024 4:51:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:51:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:22:03.203Z] May 26, 2024 4:52:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:52:03 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:22:03.204Z] May 26, 2024 4:52:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:52:03 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:22:33.206Z] May 26, 2024 4:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
+[debug] [2024-05-26T11:22:33.207Z] May 26, 2024 4:52:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest
+INFO: Unknown request URI: /v1/health
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:52:33 PM io.gapi.emulators.netty.NotFoundHandler handleRequest\nINFO: Unknown request URI: /v1/health\n"}}
+[debug] [2024-05-26T11:22:33.785Z] May 26, 2024 4:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected non-HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"May 26, 2024 4:52:33 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\nINFO: Detected non-HTTP/2 connection.\n"}}
