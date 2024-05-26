@@ -6,6 +6,7 @@ import { Suspense } from "react";
 import { ThemeProvider } from "next-themes";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { currentMode, mode } from "@/lib/firebase/database-mode";
 
 const googleSans = localFont({
   src: [
@@ -63,18 +64,25 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Suspense fallback={<Loading />}>
-            <div className="flex flex-row bg-slate-50 min-h-[100vh]">
-              <div className="flex flex-col bg-white p-24">
-                {["events", "members", "sponsors", "skills"].map(
-                  (pageName, index) => (
-                    <Button key={index} asChild variant={"link"}>
-                      <Link href={`/${pageName}`}>{pageName}</Link>
-                    </Button>
-                  )
-                )}
-              </div>
+            <div className="flex flex-col bg-slate-50 min-h-[100vh]">
+              {currentMode === mode.EMULATOR && (
+                <div className="bg-black p-4 text-white">
+                  You are using emulator
+                </div>
+              )}
+              <div className="flex flex-row">
+                <div className="flex flex-col bg-white p-24">
+                  {["events", "members", "sponsors", "skills"].map(
+                    (pageName, index) => (
+                      <Button key={index} asChild variant={"link"}>
+                        <Link href={`/${pageName}`}>{pageName}</Link>
+                      </Button>
+                    )
+                  )}
+                </div>
 
-              {children}
+                {children}
+              </div>
             </div>
           </Suspense>
         </ThemeProvider>
