@@ -4,6 +4,8 @@ import "./globals.css";
 import Loading from "./loading";
 import { Suspense } from "react";
 import { ThemeProvider } from "next-themes";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 
 const googleSans = localFont({
   src: [
@@ -61,9 +63,19 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <Suspense fallback={<Loading />}>
-            <main className="flex flex-col justify-center overflow-x-hidden relative">
+            <div className="flex flex-row bg-slate-50 min-h-[100vh]">
+              <div className="flex flex-col bg-white p-24">
+                {["events", "members", "sponsors", "skills"].map(
+                  (pageName, index) => (
+                    <Button key={index} asChild variant={"link"}>
+                      <Link href={`/${pageName}`}>{pageName}</Link>
+                    </Button>
+                  )
+                )}
+              </div>
+
               {children}
-            </main>
+            </div>
           </Suspense>
         </ThemeProvider>
       </body>

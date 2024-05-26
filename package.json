@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "emulator:start": "firebase emulators:start --import=./src/data/firebase_emulator_data --export-on-exit=./src/data/firebase_emulator_data"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.0.5",

@@ -7,9 +7,9 @@ import {
   doc,
   updateDoc,
   setDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import firebase_app from "../../lib/firebase/config";
-import "./events.css";
 import { Event } from "@/models/event/event";
 import { DataTable } from "@/components/ui/data-table";
 import { ColumnDef } from "@tanstack/react-table";
@@ -34,18 +34,21 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { DialogClose } from "@radix-ui/react-dialog";
 import { Input } from "@/components/ui/input";
 import { EventType } from "@/models/event/event-type.d";
 import { EventStatus } from "@/models/event/event-status.d";
 
-const Events: React.FC = () => {
+import React from "react";
+
+export default function Events() {
   const [events, setEvents] = useState<Event[]>([]);
+
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [selectedEvent, setSelectedEvent] = useState<any>(null);
-  const [editedEvent, setEditedEvent] = useState<any>(null);
+  const [editedEvent, setEditedEvent] = useState<Event | null>(null);
+
   const [isNewEvent, setIsNewEvent] = useState(false);
 
   useEffect(() => {
@@ -72,7 +75,6 @@ const Events: React.FC = () => {
   const handleEdit = (event: any, isNew: boolean) => {
     setIsNewEvent(isNew);
     setEditMode(true);
-    setSelectedEvent(event);
     setEditedEvent({
       ...event,
       category: Array.isArray(event.category) ? event.category : [],
@@ -103,29 +105,37 @@ const Events: React.FC = () => {
     e.preventDefault();
     try {
       const db = getFirestore(firebase_app);
-      const newEventId = `event-${selectedEvent.name}-123`;
-      const { id, ...eventDetails } = selectedEvent;
-      if (isNewEvent === true)
-        setSelectedEvent({
-          ...eventDetails,
-          id: newEventId,
-        });
+      const newId = `event-${editedEvent!.name}-123`;
 
-      const eventRef = doc(db, "events", selectedEvent.id);
+      const eventRef = doc(db, "events", isNewEvent ? newId : editedEvent!.id);
       // Update event with new data
       isNewEvent === true
-        ? await setDoc(eventRef, editedEvent)
-        : await updateDoc(eventRef, editedEvent);
+        ? await setDoc(eventRef, { ...editedEvent, id: newId })
+        : await updateDoc(eventRef, { ...editedEvent });
       // Fetch updated events
-      const updatedEvents = events.map((event) =>
-        event.id === selectedEvent.id ? editedEvent : event
-      );
+      const updatedEvents = isNewEvent
+        ? [{ ...editedEvent!, id: newId }, ...events]
+        : events.map((event) =>
+            event.id === editedEvent!.id ? editedEvent! : event
+          );
       setEvents(updatedEvents);
       setEditMode(false);
-      setSelectedEvent(null);
       setEditedEvent(null);
     } catch (error) {
       console.error("Error updating event:", error);
+    }
+  };
+
+  const handleDelete = async (eventId: string) => {
+    try {
+      const db = getFirestore(firebase_app);
+      const eventRef = doc(db, "events", eventId);
+
+      await deleteDoc(eventRef);
+
+      setEvents(events.filter((event) => event.id != eventId));
+    } catch (error) {
+      console.error("Error deleting event:", error);
     }
   };
 
@@ -163,7 +173,6 @@ const Events: React.FC = () => {
 
   const handleCancel = () => {
     setEditMode(false);
-    setSelectedEvent(null);
     setEditedEvent(null);
   };
 
@@ -301,6 +310,9 @@ const Events: React.FC = () => {
               >
                 Copy ID
               </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleDelete(event.id)}>
+                Delete
+              </DropdownMenuItem>
 
               <DropdownMenuSeparator />
             </DropdownMenuContent>
@@ -312,14 +324,21 @@ const Events: React.FC = () => {
 
   return (
     <div className="container mx-auto mt-8">
-      <h1 className="text-3xl font-bold mb-4">Events</h1>
-      <Button onClick={() => handleEdit(createTestEvent(), true)}>
-        Create Event
-      </Button>
-      <DataTable columns={columns} data={events} />
+      <div className="flex flex-col gap-4">
+        <div className="flex w-full justify-between">
+          <h1 className="text-3xl font-bold">Events</h1>
+          <Button onClick={() => handleEdit(createTestEvent(), true)}>
+            Create Event
+          </Button>
+        </div>
 
-      {editMode && selectedEvent && (
-        <Dialog open={editMode && selectedEvent}>
+        <div className="bg-white">
+          <DataTable columns={columns} data={events} />
+        </div>
+      </div>
+
+      {editMode && editedEvent && (
+        <Dialog open={editMode && editedEvent != null}>
           {/* <DialogTrigger>Open</DialogTrigger> */}
 
           <DialogContent>
@@ -334,7 +353,7 @@ const Events: React.FC = () => {
                 <Input
                   type="text"
                   name="name"
-                  value={editedEvent.name}
+                  value={editedEvent!.name}
                   onChange={handleChange}
                   className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
                 />
@@ -344,7 +363,7 @@ const Events: React.FC = () => {
                 <Input
                   type="text"
                   name="description"
-                  value={editedEvent.description}
+                  value={editedEvent!.description}
                   onChange={handleChange}
                   className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
                 />
@@ -354,7 +373,7 @@ const Events: React.FC = () => {
                 <Input
                   type="text"
                   name="description_short"
-                  value={editedEvent.description_short}
+                  value={editedEvent!.description_short}
                   onChange={handleChange}
                   className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
                 />
@@ -364,7 +383,7 @@ const Events: React.FC = () => {
                 <Input
                   type="date"
                   name="start_date"
-                  defaultValue={new Date(Number(editedEvent.start_date))
+                  defaultValue={new Date(Number(editedEvent?.start_date))
                     .toLocaleDateString()
                     .split("/")
                     .reverse()
@@ -383,7 +402,7 @@ const Events: React.FC = () => {
                 {
                   // eslint-disable-next-line @next/next/no-img-element
                   <img
-                    src={editedEvent.imageURL}
+                    src={editedEvent!.imageURL}
                     alt="image"
                     className="w-full h-auto"
                   />
@@ -391,7 +410,7 @@ const Events: React.FC = () => {
                 <input
                   type="text"
                   name="imageURL"
-                  value={editedEvent.imageURL}
+                  value={editedEvent!.imageURL}
                   onChange={handleChange}
                   className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
                 />
@@ -403,9 +422,12 @@ const Events: React.FC = () => {
                     value,
                     label: titleCase(value.split("-").join(" ")),
                   }))}
-                  selectedValue={editedEvent.status}
+                  selectedValue={editedEvent!.status}
                   onChange={(value) =>
-                    setEditedEvent({ ...editedEvent, status: value })
+                    setEditedEvent({
+                      ...editedEvent!,
+                      status: value as EventStatus,
+                    })
                   }
                   label="Select Status"
                 />
@@ -418,9 +440,12 @@ const Events: React.FC = () => {
                     value,
                     label: titleCase(value.split("-").join(" ")),
                   }))}
-                  selectedValue={editedEvent.type}
+                  selectedValue={editedEvent!.type}
                   onChange={(value) =>
-                    setEditedEvent({ ...editedEvent, type: value })
+                    setEditedEvent({
+                      ...editedEvent!,
+                      type: value as EventType,
+                    })
                   }
                   label="Select Type"
                 />
@@ -431,8 +456,8 @@ const Events: React.FC = () => {
                   type="text"
                   name="category"
                   value={
-                    Array.isArray(editedEvent.category)
-                      ? editedEvent.category.join(", ")
+                    Array.isArray(editedEvent!.category)
+                      ? editedEvent!.category.join(", ")
                       : ""
                   }
                   onChange={handleChange}
@@ -456,119 +481,6 @@ const Events: React.FC = () => {
           </DialogContent>
         </Dialog>
       )}
-
-      {/* {editMode && selectedEvent && (
-        <div className="edit-form-overlay fixed top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-50">
-          <div className="edit-form bg-white rounded-lg shadow-md p-6">
-            <h2 className="text-xl font-bold mb-4">Edit Event</h2>
-            <form onSubmit={handleSubmit}>
-              <label className="block mb-4">
-                <span className="font-bold">Name:</span>
-                <input
-                  type="text"
-                  name="name"
-                  value={editedEvent.name}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Description:</span>
-                <input
-                  type="text"
-                  name="description"
-                  value={editedEvent.description}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Description Short:</span>
-                <input
-                  type="text"
-                  name="description_short"
-                  value={editedEvent.description_short}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Start Date:</span>
-                <input
-                  type="text"
-                  name="start_date"
-                  value={new Date(
-                    Number(editedEvent.start_date)
-                  ).toLocaleDateString()}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Image URL:</span>
-                <input
-                  type="text"
-                  name="imageURL"
-                  value={editedEvent.imageURL}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Status:</span>
-                <input
-                  type="text"
-                  name="status"
-                  value={editedEvent.status}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Type:</span>
-                <input
-                  type="text"
-                  name="type"
-                  value={editedEvent.type}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Categories:</span>
-                <input
-                  type="text"
-                  name="category"
-                  value={
-                    Array.isArray(editedEvent.category)
-                      ? editedEvent.category.join(", ")
-                      : ""
-                  }
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <div className="flex justify-end">
-                <button
-                  type="submit"
-                  className="mr-2 bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-                >
-                  Save
-                </button>
-                <button
-                  type="button"
-                  onClick={handleCancel}
-                  className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-400"
-                >
-                  Cancel
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      )} */}
     </div>
   );
-};
-
-export default Events;
+}
