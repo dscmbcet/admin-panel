@@ -4,4 +4,4 @@ export enum mode {
     DEV
 }
 
-export const currentMode = mode.DEV as mode;
+export const currentMode = mode.EMULATOR as mode;
