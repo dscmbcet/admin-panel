@@ -8,6 +8,8 @@ import {
   updateDoc,
   setDoc,
   deleteDoc,
+  getDoc,
+  deleteField,
 } from "firebase/firestore";
 import firebase_app from "../../lib/firebase/config";
 import { Event } from "@/models/event/event";
@@ -39,9 +41,39 @@ import { EventType } from "@/models/event/event-type.d";
 import { EventStatus } from "@/models/event/event-status.d";
 
 import React from "react";
+import { EventShort } from "@/models/event/event-short";
+
+function convertEventToEventShort(event: Event): EventShort {
+  const {
+    id,
+    name,
+    imageURL,
+    description_short,
+    start_date,
+    status,
+    category,
+    type,
+    iteration,
+  } = event;
+
+  const eventShort: EventShort = {
+    id,
+    name,
+    imageURL,
+    description_short,
+    start_date,
+    status,
+    category,
+    type,
+  };
+
+  return eventShort;
+}
 
 export default function Events() {
   const [events, setEvents] = useState<Event[]>([]);
+
+  const [eventsShort, setEventsShort] = useState<EventShort[]>([]);
 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -56,11 +88,13 @@ export default function Events() {
       try {
         const db = getFirestore(firebase_app);
         const eventsCollection = collection(db, "events");
+        const shortEventRef = doc(db, "data", "events");
+        const shortEvents = await getDoc(shortEventRef);
+        const shortEventsData = shortEvents.data();
+        if (shortEventsData !== undefined)
+          setEventsShort(Object.values(shortEventsData["events"]));
         const querySnapshot = await getDocs(eventsCollection);
-        const fetchedEvents = querySnapshot.docs.map((doc) => ({
-          id: doc.id,
-          ...doc.data(),
-        }));
+        const fetchedEvents = querySnapshot.docs.map((doc) => doc.data());
         setEvents(fetchedEvents as Event[]);
         setLoading(false);
       } catch (error) {
@@ -108,17 +142,35 @@ export default function Events() {
       const newId = `event-${editedEvent!.name}-123`;
 
       const eventRef = doc(db, "events", isNewEvent ? newId : editedEvent!.id);
+      const shortEventRef = doc(db, "data", "events");
+
       // Update event with new data
-      isNewEvent === true
-        ? await setDoc(eventRef, { ...editedEvent, id: newId })
-        : await updateDoc(eventRef, { ...editedEvent });
+      if (isNewEvent === true) {
+        await setDoc(eventRef, { ...editedEvent, id: newId });
+      } else await updateDoc(eventRef, { ...editedEvent });
+
+      const shortEvent: EventShort = convertEventToEventShort(editedEvent!);
+
+      await updateDoc(shortEventRef, {
+        [`events.${isNewEvent ? newId : editedEvent!.id}`]: isNewEvent
+          ? {
+              ...shortEvent,
+              id: newId,
+            }
+          : shortEvent,
+      });
       // Fetch updated events
       const updatedEvents = isNewEvent
         ? [{ ...editedEvent!, id: newId }, ...events]
         : events.map((event) =>
             event.id === editedEvent!.id ? editedEvent! : event
           );
+
+      const updatedShortEvents = eventsShort.map((event) =>
+        event.id === shortEvent.id ? shortEvent : event
+      );
       setEvents(updatedEvents);
+      setEventsShort(updatedShortEvents);
       setEditMode(false);
       setEditedEvent(null);
     } catch (error) {
@@ -130,8 +182,13 @@ export default function Events() {
     try {
       const db = getFirestore(firebase_app);
       const eventRef = doc(db, "events", eventId);
+      const shortEventRef = doc(db, "data", "events");
 
       await deleteDoc(eventRef);
+
+      await updateDoc(shortEventRef, {
+        [`events.${eventId}`]: deleteField(),
+      });
 
       setEvents(events.filter((event) => event.id != eventId));
     } catch (error) {
@@ -184,7 +241,7 @@ export default function Events() {
     return <div>Error: {error}</div>;
   }
 
-  const columns: ColumnDef<Event>[] = [
+  const columns: ColumnDef<EventShort>[] = [
     {
       accessorKey: "id",
       header: "ID",
@@ -324,6 +381,7 @@ export default function Events() {
 
   return (
     <div className="container mx-auto mt-8">
+      {JSON.stringify(eventsShort)}
       <div className="flex flex-col gap-4">
         <div className="flex w-full justify-between">
           <h1 className="text-3xl font-bold">Events</h1>
@@ -333,7 +391,7 @@ export default function Events() {
         </div>
 
         <div className="bg-white">
-          <DataTable columns={columns} data={events} />
+          <DataTable columns={columns} data={eventsShort} />
         </div>
       </div>
 
