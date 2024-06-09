@@ -1,8 +1,4 @@
-export enum EventCategory{
-    Design = "design",
-    Web = "web",
-    App = "app",
-    AI = "ai",
-    Writing = "writing",
-    Others = "others"
+export interface EventCategory{
+    id: string,
+    label: string,
 }

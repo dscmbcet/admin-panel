@@ -28,14 +28,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import DropdownWithOptions from "@/components/ui/dropdown";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
+
 import { Input } from "@/components/ui/input";
 import { EventType } from "@/models/event/event-type.d";
 import { EventStatus } from "@/models/event/event-status.d";
@@ -69,6 +62,34 @@ function convertEventToEventShort(event: Event): EventShort {
 
   return eventShort;
 }
+
+import { EventCategory } from "@/models/event/event-category";
+import {
+  MultiSelectDropdown,
+  MultiSelectOption,
+} from "@/components/ui/multi-select";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+} from "@/components/ui/sheet";
+
+const skillOptions: EventCategory[] = [
+  { label: "Web Dev", id: "web-dev" },
+  { label: "Design", id: "design" },
+  { label: "Remix", id: "remix" },
+  { label: "Vite", id: "vite" },
+  { label: "Nuxt", id: "nuxt" },
+  { label: "Vue", id: "vue" },
+  { label: "Svelte", id: "svelte" },
+  { label: "Angular", id: "angular" },
+  { label: "Ember", id: "ember" },
+  { label: "Gatsby", id: "gatsby" },
+  { label: "Astro", id: "astro" },
+];
 
 export default function Events() {
   const [events, setEvents] = useState<Event[]>([]);
@@ -115,12 +136,17 @@ export default function Events() {
     });
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    values?: MultiSelectOption[]
+  ) => {
     const { name, value, valueAsDate } = e.target;
     if (name === "category") {
       setEditedEvent((prevState: any) => ({
         ...prevState,
-        [name]: value.split(",").map((item) => item.trim()),
+        [name]: values?.map((value) => {
+          return { id: value.value, label: value.label };
+        }),
       }));
     } else if (name === "start_date") {
       setEditedEvent((prevState: any) => ({
@@ -330,17 +356,20 @@ export default function Events() {
       header: "Categories",
       cell: ({ row }) => (
         <div className="flex gap-2 flex-wrap">
-          {(row.getValue("category") as Array<string>).map(
-            (category, index) => (
-              <Badge
-                key={index}
-                className="font-medium text-nowrap"
-                variant={"secondary"}
-              >
-                {category}
-              </Badge>
-            )
-          )}
+          {(
+            row.getValue("category") as Array<{
+              id: string;
+              label: string;
+            }>
+          ).map((category, index) => (
+            <Badge
+              key={index}
+              className="font-medium text-nowrap"
+              variant={"secondary"}
+            >
+              {category.label}
+            </Badge>
+          ))}
         </div>
       ),
     },
@@ -382,6 +411,19 @@ export default function Events() {
   return (
     <div className="container mx-auto mt-8">
       {JSON.stringify(eventsShort)}
+      {/* <MultiSelectDropdown
+        options={skillOptions.map((option) => option.value)}
+        values={[]}
+        onValuesChange={(options) =>
+          handleChange({
+            target: {
+              name: "category",
+              value: options.map((option) => option).join(","),
+            },
+          } as React.ChangeEvent<HTMLInputElement>)
+        }
+      /> */}
+
       <div className="flex flex-col gap-4">
         <div className="flex w-full justify-between">
           <h1 className="text-3xl font-bold">Events</h1>
@@ -396,135 +438,150 @@ export default function Events() {
       </div>
 
       {editMode && editedEvent && (
-        <Dialog open={editMode && editedEvent != null}>
+        <Sheet open={editMode && editedEvent != null}>
           {/* <DialogTrigger>Open</DialogTrigger> */}
 
-          <DialogContent>
-            <DialogHeader>
-              <DialogTitle>Edit Event</DialogTitle>
-              <DialogDescription>{`Modify your event`}</DialogDescription>
-            </DialogHeader>
+          <SheetContent className="w-[400px] sm:w-[540px]">
+            <SheetHeader>
+              <SheetTitle>Edit Event</SheetTitle>
+              <SheetDescription>{`Modify your event`}</SheetDescription>
+            </SheetHeader>
 
-            <form onSubmit={handleSubmit}>
-              <label className="block mb-4">
-                <span className="font-bold">Name</span>
-                <Input
-                  type="text"
-                  name="name"
-                  value={editedEvent!.name}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+            <label className="block mb-4">
+              <span className="font-bold">Name</span>
+              <Input
+                type="text"
+                name="name"
+                value={editedEvent!.name}
+                onChange={handleChange}
+                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Description</span>
+              <Input
+                type="text"
+                name="description"
+                value={editedEvent!.description}
+                onChange={handleChange}
+                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Description Short</span>
+              <Input
+                type="text"
+                name="description_short"
+                value={editedEvent!.description_short}
+                onChange={handleChange}
+                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Start Date</span>
+              <Input
+                type="date"
+                name="start_date"
+                defaultValue={new Date(Number(editedEvent?.start_date))
+                  .toLocaleDateString()
+                  .split("/")
+                  .reverse()
+                  .join("-")}
+                //   value={new Date(Number(editedEvent.start_date))
+                //     .toLocaleDateString()
+                //     .split("/")
+                //     .reverse()
+                //     .join("-")}
+                onChange={handleChange}
+                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Image URL</span>
+              {
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={editedEvent!.imageURL}
+                  alt="image"
+                  className="w-full h-auto"
                 />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Description</span>
-                <Input
-                  type="text"
-                  name="description"
-                  value={editedEvent!.description}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Description Short</span>
-                <Input
-                  type="text"
-                  name="description_short"
-                  value={editedEvent!.description_short}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Start Date</span>
-                <Input
-                  type="date"
-                  name="start_date"
-                  defaultValue={new Date(Number(editedEvent?.start_date))
-                    .toLocaleDateString()
-                    .split("/")
-                    .reverse()
-                    .join("-")}
-                  //   value={new Date(Number(editedEvent.start_date))
-                  //     .toLocaleDateString()
-                  //     .split("/")
-                  //     .reverse()
-                  //     .join("-")}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Image URL</span>
-                {
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    src={editedEvent!.imageURL}
-                    alt="image"
-                    className="w-full h-auto"
-                  />
+              }
+              <input
+                type="text"
+                name="imageURL"
+                value={editedEvent!.imageURL}
+                onChange={handleChange}
+                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Status</span>
+              <DropdownWithOptions
+                options={Object.values(EventStatus).map((value) => ({
+                  value,
+                  label: titleCase(value.split("-").join(" ")),
+                }))}
+                selectedValue={editedEvent!.status}
+                onChange={(value) =>
+                  setEditedEvent({
+                    ...editedEvent!,
+                    status: value as EventStatus,
+                  })
                 }
-                <input
-                  type="text"
-                  name="imageURL"
-                  value={editedEvent!.imageURL}
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Status</span>
-                <DropdownWithOptions
-                  options={Object.values(EventStatus).map((value) => ({
-                    value,
-                    label: titleCase(value.split("-").join(" ")),
-                  }))}
-                  selectedValue={editedEvent!.status}
-                  onChange={(value) =>
-                    setEditedEvent({
-                      ...editedEvent!,
-                      status: value as EventStatus,
-                    })
-                  }
-                  label="Select Status"
-                />
-              </label>
+                label="Select Status"
+              />
+            </label>
 
-              <label className="block mb-4">
-                <span className="font-bold">Type</span>
-                <DropdownWithOptions
-                  options={Object.values(EventType).map((value) => ({
-                    value,
-                    label: titleCase(value.split("-").join(" ")),
-                  }))}
-                  selectedValue={editedEvent!.type}
-                  onChange={(value) =>
-                    setEditedEvent({
-                      ...editedEvent!,
-                      type: value as EventType,
-                    })
-                  }
-                  label="Select Type"
-                />
-              </label>
-              <label className="block mb-4">
-                <span className="font-bold">Categories</span>
-                <Input
-                  type="text"
-                  name="category"
-                  value={
-                    Array.isArray(editedEvent!.category)
-                      ? editedEvent!.category.join(", ")
-                      : ""
-                  }
-                  onChange={handleChange}
-                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-                />
-              </label>
-            </form>
+            <label className="block mb-4">
+              <span className="font-bold">Type</span>
+              <DropdownWithOptions
+                options={Object.values(EventType).map((value) => ({
+                  value,
+                  label: titleCase(value.split("-").join(" ")),
+                }))}
+                selectedValue={editedEvent!.type}
+                onChange={(value) =>
+                  setEditedEvent({
+                    ...editedEvent!,
+                    type: value as EventType,
+                  })
+                }
+                label="Select Type"
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Categories</span>
 
-            <DialogFooter>
+              <MultiSelectDropdown
+                options={editedEvent!.category
+                  .concat(
+                    skillOptions.filter(
+                      (item2) =>
+                        !editedEvent!.category.some(
+                          (item1) => item1.id === item2.id
+                        )
+                    )
+                  )
+                  .map((option) => {
+                    return { value: option.id, label: option.label };
+                  })}
+                values={editedEvent!.category.map((option) => {
+                  return { value: option.id, label: option.label };
+                })}
+                onValuesChange={(options) =>
+                  handleChange(
+                    {
+                      target: {
+                        name: "category",
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>,
+                    options
+                  )
+                }
+              />
+            </label>
+
+            <SheetFooter>
               <div className="flex justify-end gap-2">
                 <Button onClick={handleSubmit}>Save</Button>
                 <Button
@@ -535,9 +592,9 @@ export default function Events() {
                   Cancel
                 </Button>
               </div>
-            </DialogFooter>
-          </DialogContent>
-        </Dialog>
+            </SheetFooter>
+          </SheetContent>
+        </Sheet>
       )}
     </div>
   );
