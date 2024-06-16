@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import {
   collection,
   getDocs,
@@ -16,7 +16,14 @@ import { Event } from "@/models/event/event";
 import { DataTable } from "@/components/ui/data-table";
 import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
-import { ArrowUpDown, MoreHorizontal } from "lucide-react";
+import {
+  ArrowUpDown,
+  Copy,
+  Edit,
+  Edit2,
+  GripVertical,
+  MoreHorizontal,
+} from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -76,6 +83,19 @@ import {
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet";
+import { UniqueIdentifier } from "@dnd-kit/core";
+import Sortable from "@/components/ui/sortable";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Label } from "@radix-ui/react-dropdown-menu";
+import { EventSchedule } from "@/models/event/event-schedule";
 
 const skillOptions: EventCategory[] = [
   { label: "Web Dev", id: "web-dev" },
@@ -411,18 +431,6 @@ export default function Events() {
   return (
     <div className="container mx-auto mt-8">
       {JSON.stringify(eventsShort)}
-      {/* <MultiSelectDropdown
-        options={skillOptions.map((option) => option.value)}
-        values={[]}
-        onValuesChange={(options) =>
-          handleChange({
-            target: {
-              name: "category",
-              value: options.map((option) => option).join(","),
-            },
-          } as React.ChangeEvent<HTMLInputElement>)
-        }
-      /> */}
 
       <div className="flex flex-col gap-4">
         <div className="flex w-full justify-between">
@@ -441,145 +449,150 @@ export default function Events() {
         <Sheet open={editMode && editedEvent != null}>
           {/* <DialogTrigger>Open</DialogTrigger> */}
 
-          <SheetContent className="w-[400px] sm:w-[540px]">
+          <SheetContent className="w-[900px] h-full flex flex-col">
             <SheetHeader>
               <SheetTitle>Edit Event</SheetTitle>
               <SheetDescription>{`Modify your event`}</SheetDescription>
             </SheetHeader>
 
-            <label className="block mb-4">
-              <span className="font-bold">Name</span>
-              <Input
-                type="text"
-                name="name"
-                value={editedEvent!.name}
-                onChange={handleChange}
-                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-              />
-            </label>
-            <label className="block mb-4">
-              <span className="font-bold">Description</span>
-              <Input
-                type="text"
-                name="description"
-                value={editedEvent!.description}
-                onChange={handleChange}
-                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-              />
-            </label>
-            <label className="block mb-4">
-              <span className="font-bold">Description Short</span>
-              <Input
-                type="text"
-                name="description_short"
-                value={editedEvent!.description_short}
-                onChange={handleChange}
-                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-              />
-            </label>
-            <label className="block mb-4">
-              <span className="font-bold">Start Date</span>
-              <Input
-                type="date"
-                name="start_date"
-                defaultValue={new Date(Number(editedEvent?.start_date))
-                  .toLocaleDateString()
-                  .split("/")
-                  .reverse()
-                  .join("-")}
-                //   value={new Date(Number(editedEvent.start_date))
-                //     .toLocaleDateString()
-                //     .split("/")
-                //     .reverse()
-                //     .join("-")}
-                onChange={handleChange}
-                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-              />
-            </label>
-            <label className="block mb-4">
-              <span className="font-bold">Image URL</span>
-              {
-                // eslint-disable-next-line @next/next/no-img-element
-                <img
-                  src={editedEvent!.imageURL}
-                  alt="image"
-                  className="w-full h-auto"
+            <div className="w-full flex flex-col flex-grow h-full overflow-scroll">
+              <label className="block mb-4">
+                <span className="font-bold">Name</span>
+                <Input
+                  type="text"
+                  name="name"
+                  value={editedEvent!.name}
+                  onChange={handleChange}
+                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
                 />
-              }
-              <input
-                type="text"
-                name="imageURL"
-                value={editedEvent!.imageURL}
-                onChange={handleChange}
-                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-              />
-            </label>
-            <label className="block mb-4">
-              <span className="font-bold">Status</span>
-              <DropdownWithOptions
-                options={Object.values(EventStatus).map((value) => ({
-                  value,
-                  label: titleCase(value.split("-").join(" ")),
-                }))}
-                selectedValue={editedEvent!.status}
-                onChange={(value) =>
-                  setEditedEvent({
-                    ...editedEvent!,
-                    status: value as EventStatus,
-                  })
-                }
-                label="Select Status"
-              />
-            </label>
+              </label>
+              <label className="block mb-4">
+                <span className="font-bold">Description</span>
+                <Input
+                  type="text"
+                  name="description"
+                  value={editedEvent!.description}
+                  onChange={handleChange}
+                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+                />
+              </label>
+              <label className="block mb-4">
+                <span className="font-bold">Description Short</span>
+                <Input
+                  type="text"
+                  name="description_short"
+                  value={editedEvent!.description_short}
+                  onChange={handleChange}
+                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+                />
+              </label>
+              <label className="block mb-4">
+                <span className="font-bold">Start Date</span>
+                <Input
+                  type="date"
+                  name="start_date"
+                  defaultValue={new Date(Number(editedEvent?.start_date))
+                    .toLocaleDateString()
+                    .split("/")
+                    .reverse()
+                    .join("-")}
+                  //   value={new Date(Number(editedEvent.start_date))
+                  //     .toLocaleDateString()
+                  //     .split("/")
+                  //     .reverse()
+                  //     .join("-")}
+                  onChange={handleChange}
+                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+                />
+              </label>
 
-            <label className="block mb-4">
-              <span className="font-bold">Type</span>
-              <DropdownWithOptions
-                options={Object.values(EventType).map((value) => ({
-                  value,
-                  label: titleCase(value.split("-").join(" ")),
-                }))}
-                selectedValue={editedEvent!.type}
-                onChange={(value) =>
-                  setEditedEvent({
-                    ...editedEvent!,
-                    type: value as EventType,
-                  })
-                }
-                label="Select Type"
-              />
-            </label>
-            <label className="block mb-4">
-              <span className="font-bold">Categories</span>
+              <Schedule schedule={editedEvent!.schedule} />
 
-              <MultiSelectDropdown
-                options={editedEvent!.category
-                  .concat(
-                    skillOptions.filter(
-                      (item2) =>
-                        !editedEvent!.category.some(
-                          (item1) => item1.id === item2.id
-                        )
+              <label className="block mb-4">
+                <span className="font-bold">Image URL</span>
+                {
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={editedEvent!.imageURL}
+                    alt="image"
+                    className="w-full h-auto"
+                  />
+                }
+                <input
+                  type="text"
+                  name="imageURL"
+                  value={editedEvent!.imageURL}
+                  onChange={handleChange}
+                  className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
+                />
+              </label>
+              <label className="block mb-4">
+                <span className="font-bold">Status</span>
+                <DropdownWithOptions
+                  options={Object.values(EventStatus).map((value) => ({
+                    value,
+                    label: titleCase(value.split("-").join(" ")),
+                  }))}
+                  selectedValue={editedEvent!.status}
+                  onChange={(value) =>
+                    setEditedEvent({
+                      ...editedEvent!,
+                      status: value as EventStatus,
+                    })
+                  }
+                  label="Select Status"
+                />
+              </label>
+
+              <label className="block mb-4">
+                <span className="font-bold">Type</span>
+                <DropdownWithOptions
+                  options={Object.values(EventType).map((value) => ({
+                    value,
+                    label: titleCase(value.split("-").join(" ")),
+                  }))}
+                  selectedValue={editedEvent!.type}
+                  onChange={(value) =>
+                    setEditedEvent({
+                      ...editedEvent!,
+                      type: value as EventType,
+                    })
+                  }
+                  label="Select Type"
+                />
+              </label>
+              <label className="block mb-4">
+                <span className="font-bold">Categories</span>
+
+                <MultiSelectDropdown
+                  options={editedEvent!.category
+                    .concat(
+                      skillOptions.filter(
+                        (item2) =>
+                          !editedEvent!.category.some(
+                            (item1) => item1.id === item2.id
+                          )
+                      )
                     )
-                  )
-                  .map((option) => {
+                    .map((option) => {
+                      return { value: option.id, label: option.label };
+                    })}
+                  values={editedEvent!.category.map((option) => {
                     return { value: option.id, label: option.label };
                   })}
-                values={editedEvent!.category.map((option) => {
-                  return { value: option.id, label: option.label };
-                })}
-                onValuesChange={(options) =>
-                  handleChange(
-                    {
-                      target: {
-                        name: "category",
-                      },
-                    } as React.ChangeEvent<HTMLInputElement>,
-                    options
-                  )
-                }
-              />
-            </label>
+                  onValuesChange={(options) =>
+                    handleChange(
+                      {
+                        target: {
+                          name: "category",
+                        },
+                      } as React.ChangeEvent<HTMLInputElement>,
+                      options
+                    )
+                  }
+                />
+              </label>
+            </div>
 
             <SheetFooter>
               <div className="flex justify-end gap-2">
@@ -597,5 +610,141 @@ export default function Events() {
         </Sheet>
       )}
     </div>
+  );
+}
+
+export function NewScheduleDialogue({
+  children,
+  addSchedule,
+}: {
+  children: ReactNode | ReactNode[];
+  addSchedule: (scheduleItem: EventSchedule) => void;
+}) {
+  const [newScheduleItem, setNewScheduleitem] = useState<EventSchedule>({
+    name: "",
+    description: "",
+    start_date: "",
+    end_date: "",
+    display: true,
+  });
+
+  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const { name, value } = e.target;
+    if (name === "name")
+      setNewScheduleitem({
+        ...newScheduleItem,
+        name: value,
+      });
+    else if (name === "description")
+      setNewScheduleitem({
+        ...newScheduleItem,
+        description: value,
+      });
+  }
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>{children}</DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Add a day</DialogTitle>
+          <DialogDescription>Add a day to your schedule</DialogDescription>
+        </DialogHeader>
+        <div className="grid gap-4 py-4">
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label className="text-right">Name</Label>
+            <Input
+              id="name"
+              name="name"
+              defaultValue="Day 1"
+              className="col-span-3"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label className="text-right">Description</Label>
+            <Input
+              id="description"
+              name="description"
+              defaultValue="Enter a random description"
+              className="col-span-3"
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+        <DialogFooter>
+          <Button type="submit" onClick={() => addSchedule(newScheduleItem)}>
+            Save Add
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  );
+}
+
+function Schedule({ schedule }: { schedule: EventSchedule[] }) {
+  interface ScheduleItem {
+    item: EventSchedule;
+    id: string;
+  }
+
+  const [editedSchedule, setEditedSchedule] = useState<ScheduleItem[]>(
+    schedule != undefined
+      ? schedule.map((item, index) => {
+          return { item: item, id: index.toString() };
+        })
+      : []
+  );
+
+  function addSchedule(scheduleItem: EventSchedule) {
+    setEditedSchedule([
+      ...editedSchedule,
+      {
+        item: scheduleItem,
+        id: editedSchedule.length.toString(),
+      },
+    ]);
+    console.log(editedSchedule);
+  }
+
+  const handleDragEnd = (newOrder: ScheduleItem[]) => {
+    setEditedSchedule(newOrder);
+  };
+
+  const handleDelete = (idToDelete: string) => {
+    setEditedSchedule((prevItems) =>
+      prevItems.filter((item) => item.id !== idToDelete)
+    );
+  };
+
+  return (
+    <label className="block mb-4">
+      <div className="flex justify-between">
+        <span className="font-bold">Schedule</span>
+        <NewScheduleDialogue addSchedule={addSchedule}>
+          <Button variant="outline">Add Day</Button>
+        </NewScheduleDialogue>
+      </div>
+
+      <Sortable
+        items={editedSchedule != undefined ? editedSchedule : []}
+        renderItems={(item, index) => (
+          <div className="mt-2 p-4 border w-full flex gap-4 items-start rounded-lg">
+            <GripVertical width={16} height={16} />
+            <div className="flex justify-between w-full">
+              <div className="flex flex-col">
+                <p className="text-xs">{`Slot ${index + 1}`}</p>
+                <p>{item.item.name}</p>
+              </div>
+              <NewScheduleDialogue addSchedule={addSchedule}>
+                <Edit2 width={16} height={16} />
+              </NewScheduleDialogue>
+            </div>
+          </div>
+        )}
+        onDragEnd={handleDragEnd}
+        onDelete={handleDelete}
+      ></Sortable>
+    </label>
   );
 }
