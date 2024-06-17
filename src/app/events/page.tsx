@@ -96,6 +96,7 @@ import {
 } from "@/components/ui/dialog";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { EventSchedule } from "@/models/event/event-schedule";
+import { DialogClose } from "@radix-ui/react-dialog";
 
 const skillOptions: EventCategory[] = [
   { label: "Web Dev", id: "web-dev" },
@@ -614,19 +615,29 @@ export default function Events() {
 }
 
 export function NewScheduleDialogue({
-  children,
+  // children,
   addSchedule,
+  closeDialogue,
+  schedule,
 }: {
-  children: ReactNode | ReactNode[];
-  addSchedule: (scheduleItem: EventSchedule) => void;
+  // children: ReactNode | ReactNode[];
+  addSchedule: (scheduleItem: EventSchedule, id?: string) => void;
+  closeDialogue: () => void;
+  schedule: ScheduleItem | null;
 }) {
-  const [newScheduleItem, setNewScheduleitem] = useState<EventSchedule>({
-    name: "",
-    description: "",
-    start_date: "",
-    end_date: "",
-    display: true,
-  });
+  const isNewSchedule: boolean = schedule === null;
+
+  const [newScheduleItem, setNewScheduleitem] = useState<EventSchedule>(
+    isNewSchedule
+      ? {
+          name: "",
+          description: "",
+          start_date: "",
+          end_date: "",
+          display: true,
+        }
+      : schedule!.item
+  );
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const { name, value } = e.target;
@@ -643,9 +654,9 @@ export function NewScheduleDialogue({
   }
 
   return (
-    <Dialog>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <Dialog open={true}>
       <DialogContent className="sm:max-w-[425px]">
+        <DialogClose onClick={closeDialogue}>hello</DialogClose>
         <DialogHeader>
           <DialogTitle>Add a day</DialogTitle>
           <DialogDescription>Add a day to your schedule</DialogDescription>
@@ -656,7 +667,8 @@ export function NewScheduleDialogue({
             <Input
               id="name"
               name="name"
-              defaultValue="Day 1"
+              placeholder="Day 1"
+              value={newScheduleItem.name}
               className="col-span-3"
               onChange={handleChange}
             />
@@ -666,14 +678,18 @@ export function NewScheduleDialogue({
             <Input
               id="description"
               name="description"
-              defaultValue="Enter a random description"
+              placeholder="Enter a random description"
+              value={newScheduleItem.description}
               className="col-span-3"
               onChange={handleChange}
             />
           </div>
         </div>
         <DialogFooter>
-          <Button type="submit" onClick={() => addSchedule(newScheduleItem)}>
+          <Button
+            type="submit"
+            onClick={() => addSchedule(newScheduleItem, schedule?.id)}
+          >
             Save Add
           </Button>
         </DialogFooter>
@@ -682,12 +698,12 @@ export function NewScheduleDialogue({
   );
 }
 
-function Schedule({ schedule }: { schedule: EventSchedule[] }) {
-  interface ScheduleItem {
-    item: EventSchedule;
-    id: string;
-  }
+interface ScheduleItem {
+  item: EventSchedule;
+  id: string;
+}
 
+function Schedule({ schedule }: { schedule: EventSchedule[] }) {
   const [editedSchedule, setEditedSchedule] = useState<ScheduleItem[]>(
     schedule != undefined
       ? schedule.map((item, index) => {
@@ -696,14 +712,19 @@ function Schedule({ schedule }: { schedule: EventSchedule[] }) {
       : []
   );
 
-  function addSchedule(scheduleItem: EventSchedule) {
-    setEditedSchedule([
-      ...editedSchedule,
-      {
-        item: scheduleItem,
-        id: editedSchedule.length.toString(),
-      },
-    ]);
+  const [showSchedule, setShowSchedule] = useState(false);
+
+  function addSchedule(scheduleItem: EventSchedule, id?: string) {
+    console.log(id);
+    setEditedSchedule(
+      [
+        ...editedSchedule.filter((item) => item.id != id),
+        {
+          item: scheduleItem,
+          id: id ?? editedSchedule.length.toString(),
+        },
+      ].sort((item_a, item_b) => Number(item_a.id) - Number(item_b.id))
+    );
     console.log(editedSchedule);
   }
 
@@ -717,34 +738,67 @@ function Schedule({ schedule }: { schedule: EventSchedule[] }) {
     );
   };
 
-  return (
-    <label className="block mb-4">
-      <div className="flex justify-between">
-        <span className="font-bold">Schedule</span>
-        <NewScheduleDialogue addSchedule={addSchedule}>
-          <Button variant="outline">Add Day</Button>
-        </NewScheduleDialogue>
-      </div>
+  const toggleDialogue = () => {
+    const oldSchedule = showSchedule;
+    setShowSchedule(!oldSchedule);
+  };
 
-      <Sortable
-        items={editedSchedule != undefined ? editedSchedule : []}
-        renderItems={(item, index) => (
-          <div className="mt-2 p-4 border w-full flex gap-4 items-start rounded-lg">
-            <GripVertical width={16} height={16} />
-            <div className="flex justify-between w-full">
-              <div className="flex flex-col">
-                <p className="text-xs">{`Slot ${index + 1}`}</p>
-                <p>{item.item.name}</p>
+  const [currentSchedule, setCurrentSchedule] = useState<ScheduleItem | null>(
+    null
+  );
+
+  return (
+    <div>
+      {showSchedule && (
+        <NewScheduleDialogue
+          schedule={currentSchedule}
+          addSchedule={addSchedule}
+          closeDialogue={toggleDialogue}
+        />
+      )}
+
+      <label className="block mb-4">
+        <div className="flex justify-between">
+          <span className="font-bold">Schedule</span>
+
+          <Button
+            variant="outline"
+            onClick={() => {
+              setCurrentSchedule(null);
+              toggleDialogue();
+            }}
+          >
+            Add Day
+          </Button>
+        </div>
+
+        <Sortable
+          items={editedSchedule != undefined ? editedSchedule : []}
+          renderItems={(item, index) => (
+            <div className="mt-2 p-4 border w-full flex gap-4 items-start rounded-lg">
+              <GripVertical width={16} height={16} />
+              <div className="flex justify-between w-full">
+                <div className="flex flex-col">
+                  <p className="text-xs">{`Slot ${index + 1}`}</p>
+                  <p>{item.item.name}</p>
+                </div>
+
+                <Button
+                  variant={"ghost"}
+                  onClick={(e) => {
+                    setCurrentSchedule(item);
+                    toggleDialogue();
+                  }}
+                >
+                  <Edit2 width={16} height={16} />
+                </Button>
               </div>
-              <NewScheduleDialogue addSchedule={addSchedule}>
-                <Edit2 width={16} height={16} />
-              </NewScheduleDialogue>
             </div>
-          </div>
-        )}
-        onDragEnd={handleDragEnd}
-        onDelete={handleDelete}
-      ></Sortable>
-    </label>
+          )}
+          onDragEnd={handleDragEnd}
+          onDelete={handleDelete}
+        ></Sortable>
+      </label>
+    </div>
   );
 }
