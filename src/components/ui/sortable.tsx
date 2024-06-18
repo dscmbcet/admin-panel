@@ -62,36 +62,34 @@ const Sortable: React.FC<SortableProps> = ({
   };
 
   return (
-    <div className="w-full">
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCenter}
-        onDragEnd={handleDragEnd}
-        modifiers={[restrictToVerticalAxis, restrictToParentElement]}
-      >
-        <SortableContext items={items} strategy={verticalListSortingStrategy}>
-          {items.map((item, index) => (
-            <SortableLinks
-              key={item.id}
-              id={{
-                id: item.id,
-                name: item.item.name,
-              }}
-              onDelete={onDelete}
-              renderItems={() =>
-                renderItems(
-                  {
-                    item: item.item,
-                    id: item.id,
-                  },
-                  index
-                )
-              }
-            />
-          ))}
-        </SortableContext>
-      </DndContext>
-    </div>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCenter}
+      onDragEnd={handleDragEnd}
+      modifiers={[restrictToVerticalAxis, restrictToParentElement]}
+    >
+      <SortableContext items={items} strategy={verticalListSortingStrategy}>
+        {items.map((item, index) => (
+          <SortableLinks
+            key={item.id}
+            id={{
+              id: item.id,
+              name: item.item.name,
+            }}
+            onDelete={onDelete}
+            renderItems={() =>
+              renderItems(
+                {
+                  item: item.item,
+                  id: item.id,
+                },
+                index
+              )
+            }
+          />
+        ))}
+      </SortableContext>
+    </DndContext>
   );
 };
 
