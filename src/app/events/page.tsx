@@ -18,6 +18,7 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/components/ui/badge";
 import {
   ArrowUpDown,
+  CalendarIcon,
   Copy,
   Edit,
   Edit2,
@@ -97,6 +98,15 @@ import {
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { EventSchedule } from "@/models/event/event-schedule";
 import { DialogClose } from "@radix-ui/react-dialog";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
+import { format } from "date-fns";
+import { DateTimePicker } from "@/components/ui/time-picker/date-time-picker";
 
 const skillOptions: EventCategory[] = [
   { label: "Web Dev", id: "web-dev" },
@@ -148,7 +158,7 @@ export default function Events() {
     fetchEvents();
   }, []);
 
-  const handleEdit = (event: any, isNew: boolean) => {
+  const handleEdit = (event: Event, isNew: boolean) => {
     setIsNewEvent(isNew);
     setEditMode(true);
     setEditedEvent({
@@ -190,6 +200,8 @@ export default function Events() {
 
       const eventRef = doc(db, "events", isNewEvent ? newId : editedEvent!.id);
       const shortEventRef = doc(db, "data", "events");
+
+      console.log(JSON.stringify(editedEvent?.schedule));
 
       // Update event with new data
       if (isNewEvent === true) {
@@ -278,6 +290,19 @@ export default function Events() {
   const handleCancel = () => {
     setEditMode(false);
     setEditedEvent(null);
+  };
+
+  const fetchEvent = async (event: EventShort) => {
+    try {
+      const db = getFirestore(firebase_app);
+      const eventDoc = doc(db, "events", event.id);
+      const querySnapshot = await getDoc(eventDoc);
+      const fetchedEvent = querySnapshot.data() as Event;
+      return fetchedEvent;
+    } catch (error) {
+      setError("Error fetching events");
+      setLoading(false);
+    }
   };
 
   if (loading) {
@@ -409,7 +434,15 @@ export default function Events() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
-              <DropdownMenuItem onClick={() => handleEdit(event, false)}>
+              <DropdownMenuItem
+                onClick={async () => {
+                  const fetchedEvent = await fetchEvent(event);
+                  if (fetchedEvent != undefined) {
+                    setEditedEvent(fetchedEvent);
+                    handleEdit(fetchedEvent, false);
+                  }
+                }}
+              >
                 Edit
               </DropdownMenuItem>
               <DropdownMenuItem
@@ -489,6 +522,18 @@ export default function Events() {
               </label>
               <label className="block mb-4">
                 <span className="font-bold">Start Date</span>
+
+                <DateTimePicker
+                  initialDate={new Date(Number(editedEvent?.start_date))}
+                  onSelect={(date) =>
+                    handleChange({
+                      target: {
+                        name: "start_date",
+                        valueAsDate: date,
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>)
+                  }
+                ></DateTimePicker>
                 <Input
                   type="date"
                   name="start_date"
@@ -506,8 +551,18 @@ export default function Events() {
                   className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
                 />
               </label>
+              {editedEvent!.schedule?.length ?? "nope"}
+              {editedEvent!.name}
 
-              <Schedule schedule={editedEvent!.schedule} />
+              <Schedule
+                schedule={editedEvent!.schedule}
+                getSchedule={(schedule) => {
+                  setEditedEvent({
+                    ...editedEvent!,
+                    schedule: schedule,
+                  });
+                }}
+              />
 
               <label className="block mb-4">
                 <span className="font-bold">Image URL</span>
@@ -640,28 +695,28 @@ export function NewScheduleDialogue({
   );
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-    if (name === "name")
+    const { name, value, valueAsDate } = e.target;
+    if (name === "name" || name === "description")
       setNewScheduleitem({
         ...newScheduleItem,
-        name: value,
+        [name]: value,
       });
-    else if (name === "description")
+    else if (name === "start_date" || name === "end_date")
       setNewScheduleitem({
         ...newScheduleItem,
-        description: value,
+        [name]: valueAsDate?.getTime().toString(),
       });
   }
 
   return (
     <Dialog open={true}>
       <DialogContent className="sm:max-w-[425px]">
-        <DialogClose onClick={closeDialogue}>hello</DialogClose>
         <DialogHeader>
           <DialogTitle>Add a day</DialogTitle>
           <DialogDescription>Add a day to your schedule</DialogDescription>
         </DialogHeader>
         <div className="grid gap-4 py-4">
+          {/* {JSON.stringify(newScheduleItem)} */}
           <div className="grid grid-cols-4 items-center gap-4">
             <Label className="text-right">Name</Label>
             <Input
@@ -684,11 +739,44 @@ export function NewScheduleDialogue({
               onChange={handleChange}
             />
           </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label className="text-right">Start Date</Label>
+            <DateTimePicker
+              initialDate={new Date(Number(newScheduleItem.start_date))}
+              onSelect={(date) =>
+                handleChange({
+                  target: {
+                    name: "start_date",
+                    valueAsDate: date,
+                  },
+                } as React.ChangeEvent<HTMLInputElement>)
+              }
+            ></DateTimePicker>
+          </div>
+          <div className="grid grid-cols-4 items-center gap-4">
+            <Label className="text-right">End Date</Label>
+            <DateTimePicker
+              initialDate={new Date(Number(newScheduleItem.end_date))}
+              onSelect={(date) =>
+                handleChange({
+                  target: {
+                    name: "end_date",
+                    valueAsDate: date,
+                  },
+                } as React.ChangeEvent<HTMLInputElement>)
+              }
+            ></DateTimePicker>
+          </div>
         </div>
         <DialogFooter>
+          <Button variant={"outline"} onClick={closeDialogue}>
+            Cancel
+          </Button>
           <Button
-            type="submit"
-            onClick={() => addSchedule(newScheduleItem, schedule?.id)}
+            onClick={() => {
+              addSchedule(newScheduleItem, schedule?.id);
+              closeDialogue();
+            }}
           >
             Save Add
           </Button>
@@ -703,9 +791,15 @@ interface ScheduleItem {
   id: string;
 }
 
-function Schedule({ schedule }: { schedule: EventSchedule[] }) {
+interface ScheduleProps {
+  schedule: EventSchedule[];
+  getSchedule: (schedule: EventSchedule[]) => void;
+}
+
+function Schedule({ schedule, getSchedule }: ScheduleProps) {
+  console.log(schedule);
   const [editedSchedule, setEditedSchedule] = useState<ScheduleItem[]>(
-    schedule != undefined
+    schedule !== undefined
       ? schedule.map((item, index) => {
           return { item: item, id: index.toString() };
         })
@@ -747,17 +841,131 @@ function Schedule({ schedule }: { schedule: EventSchedule[] }) {
     null
   );
 
+  const getDateString = (timestampStart: string, timestampEnd: string) => {
+    const startDate = new Date(Number(timestampStart));
+    const endDate = new Date(Number(timestampEnd));
+
+    const startYear = startDate.getFullYear();
+    const startMonth = startDate.getMonth();
+    const startDay = startDate.getDate();
+    const startHours = startDate.getHours();
+    const startMinutes = startDate.getMinutes();
+
+    const endYear = endDate.getFullYear();
+    const endMonth = endDate.getMonth();
+    const endDay = endDate.getDate();
+    const endHours = endDate.getHours();
+    const endMinutes = endDate.getMinutes();
+
+    const monthNames = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+
+    const formatTime = (
+      hours: number,
+      minutes: number,
+      omitPeriod: boolean = false
+    ) => {
+      const period = hours >= 12 ? "PM" : "AM";
+      const formattedHours = hours % 12 || 12;
+      const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+      return `${formattedHours}:${formattedMinutes}${
+        omitPeriod ? "" : ` ${period}`
+      }`;
+    };
+
+    if (
+      startYear === endYear &&
+      startMonth === endMonth &&
+      startDay === endDay &&
+      startHours === endHours &&
+      startMinutes === endMinutes
+    ) {
+      // Same day and time
+      return `${
+        monthNames[startMonth]
+      } ${startDay}, ${startYear} at ${formatTime(startHours, startMinutes)}`;
+    } else if (
+      startYear === endYear &&
+      startMonth === endMonth &&
+      startDay === endDay
+    ) {
+      // Same day, different times
+
+      //Same Period
+      if (
+        (startHours >= 12 && endHours >= 12) ||
+        (startHours < 12 && endHours < 12)
+      )
+        return `${
+          monthNames[startMonth]
+        } ${startDay}, ${startYear} at ${formatTime(
+          startHours,
+          startMinutes,
+          true
+        )} - ${formatTime(endHours, endMinutes)}`;
+      // Different Periods
+      else
+        return `${
+          monthNames[startMonth]
+        } ${startDay}, ${startYear} from ${formatTime(
+          startHours,
+          startMinutes
+        )} - ${formatTime(endHours, endMinutes)}`;
+    } else if (startYear === endYear && startMonth === endMonth) {
+      // Same month, different days
+      return `${monthNames[startMonth]} ${startDay} at ${formatTime(
+        startHours,
+        startMinutes
+      )} - ${endDay} at ${formatTime(endHours, endMinutes)}, ${startYear}`;
+    } else if (startYear === endYear) {
+      // Same year, different months
+      return `${monthNames[startMonth]} ${startDay} at ${formatTime(
+        startHours,
+        startMinutes
+      )}, ${startYear} - ${monthNames[endMonth]} ${endDay} at ${formatTime(
+        endHours,
+        endMinutes
+      )}, ${endYear}`;
+    } else {
+      // Different years
+      return `${monthNames[startMonth]} ${startDay} at ${formatTime(
+        startHours,
+        startMinutes
+      )}, ${startYear} - ${monthNames[endMonth]} ${endDay} at ${formatTime(
+        endHours,
+        endMinutes
+      )}, ${endYear}`;
+    }
+  };
+
   return (
     <div>
       {showSchedule && (
         <NewScheduleDialogue
           schedule={currentSchedule}
-          addSchedule={addSchedule}
+          addSchedule={(scheduleItem, id) => {
+            addSchedule(scheduleItem, id);
+            getSchedule(
+              editedSchedule.map((scheduleItem) => scheduleItem.item)
+            );
+          }}
           closeDialogue={toggleDialogue}
         />
       )}
 
-      <label className="block mb-4">
+      <label className="flex flex-col mb-4 gap-2">
         <div className="flex justify-between">
           <span className="font-bold">Schedule</span>
 
@@ -771,16 +979,27 @@ function Schedule({ schedule }: { schedule: EventSchedule[] }) {
             Add Day
           </Button>
         </div>
+      </label>
 
+      <div
+        className="flex flex-col grow gap-2 box-border overflow-hidden w-full"
+        onMouseEnter={(e) => e.preventDefault()}
+      >
         <Sortable
           items={editedSchedule != undefined ? editedSchedule : []}
           renderItems={(item, index) => (
-            <div className="mt-2 p-4 border w-full flex gap-4 items-start rounded-lg">
-              <GripVertical width={16} height={16} />
-              <div className="flex justify-between w-full">
-                <div className="flex flex-col">
+            <div className="p-4 border grow justify-start flex gap-4 rounded-lg overflow-auto">
+              <GripVertical width={16} height={16} className="shrink-0" />
+              <div className="flex grow min-w-0">
+                <div className="flex flex-col grow min-w-0">
                   <p className="text-xs">{`Slot ${index + 1}`}</p>
                   <p>{item.item.name}</p>
+                  <p className="text-sm grow box-border truncate min-w-0">
+                    {item.item.description}
+                  </p>
+                  <p className="text-sm">
+                    {getDateString(item.item.start_date, item.item.end_date)}
+                  </p>
                 </div>
 
                 <Button
@@ -798,7 +1017,7 @@ function Schedule({ schedule }: { schedule: EventSchedule[] }) {
           onDragEnd={handleDragEnd}
           onDelete={handleDelete}
         ></Sortable>
-      </label>
+      </div>
     </div>
   );
 }
