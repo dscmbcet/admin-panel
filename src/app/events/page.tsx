@@ -44,33 +44,6 @@ import { EventStatus } from "@/models/event/event-status.d";
 import React from "react";
 import { EventShort } from "@/models/event/event-short";
 
-function convertEventToEventShort(event: Event): EventShort {
-  const {
-    id,
-    name,
-    imageURL,
-    description_short,
-    start_date,
-    status,
-    category,
-    type,
-    iteration,
-  } = event;
-
-  const eventShort: EventShort = {
-    id,
-    name,
-    imageURL,
-    description_short,
-    start_date,
-    status,
-    category,
-    type,
-  };
-
-  return eventShort;
-}
-
 import { EventCategory } from "@/models/event/event-category";
 import {
   MultiSelectDropdown,
@@ -107,6 +80,10 @@ import {
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
 import { DateTimePicker } from "@/components/ui/time-picker/date-time-picker";
+import titleCase from "@/utils/title-case";
+import getDateString from "@/utils/date-string";
+import convertEventToEventShort from "./utils/event-to-event-short";
+import getDefaultEvent from "./utils/get-default-event";
 
 const skillOptions: EventCategory[] = [
   { label: "Web Dev", id: "web-dev" },
@@ -254,38 +231,6 @@ export default function Events() {
       console.error("Error deleting event:", error);
     }
   };
-
-  function titleCase(str: string) {
-    return str
-      .split(" ")
-      .map(function (val) {
-        return val.charAt(0).toUpperCase() + val.substr(1).toLowerCase();
-      })
-      .join(" ");
-  }
-
-  function createTestEvent(): Event {
-    const event: Event = {
-      schedule: [],
-      description: "",
-      skills: {},
-      prerequisites: {},
-      mentors: {},
-      gallery: [],
-      testimonials: {},
-      sponsors: {},
-      displayShedule: false,
-      id: "test",
-      name: "",
-      imageURL: "",
-      description_short: "",
-      start_date: "",
-      status: EventStatus.Upcoming,
-      category: [],
-      type: EventType.Virtual,
-    };
-    return event;
-  }
 
   const handleCancel = () => {
     setEditMode(false);
@@ -469,7 +414,7 @@ export default function Events() {
       <div className="flex flex-col gap-4">
         <div className="flex w-full justify-between">
           <h1 className="text-3xl font-bold">Events</h1>
-          <Button onClick={() => handleEdit(createTestEvent(), true)}>
+          <Button onClick={() => handleEdit(getDefaultEvent(), true)}>
             Create Event
           </Button>
         </div>
@@ -840,115 +785,6 @@ function Schedule({ schedule, getSchedule }: ScheduleProps) {
   const [currentSchedule, setCurrentSchedule] = useState<ScheduleItem | null>(
     null
   );
-
-  const getDateString = (timestampStart: string, timestampEnd: string) => {
-    const startDate = new Date(Number(timestampStart));
-    const endDate = new Date(Number(timestampEnd));
-
-    const startYear = startDate.getFullYear();
-    const startMonth = startDate.getMonth();
-    const startDay = startDate.getDate();
-    const startHours = startDate.getHours();
-    const startMinutes = startDate.getMinutes();
-
-    const endYear = endDate.getFullYear();
-    const endMonth = endDate.getMonth();
-    const endDay = endDate.getDate();
-    const endHours = endDate.getHours();
-    const endMinutes = endDate.getMinutes();
-
-    const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-
-    const formatTime = (
-      hours: number,
-      minutes: number,
-      omitPeriod: boolean = false
-    ) => {
-      const period = hours >= 12 ? "PM" : "AM";
-      const formattedHours = hours % 12 || 12;
-      const formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-      return `${formattedHours}:${formattedMinutes}${
-        omitPeriod ? "" : ` ${period}`
-      }`;
-    };
-
-    if (
-      startYear === endYear &&
-      startMonth === endMonth &&
-      startDay === endDay &&
-      startHours === endHours &&
-      startMinutes === endMinutes
-    ) {
-      // Same day and time
-      return `${
-        monthNames[startMonth]
-      } ${startDay}, ${startYear} at ${formatTime(startHours, startMinutes)}`;
-    } else if (
-      startYear === endYear &&
-      startMonth === endMonth &&
-      startDay === endDay
-    ) {
-      // Same day, different times
-
-      //Same Period
-      if (
-        (startHours >= 12 && endHours >= 12) ||
-        (startHours < 12 && endHours < 12)
-      )
-        return `${
-          monthNames[startMonth]
-        } ${startDay}, ${startYear} at ${formatTime(
-          startHours,
-          startMinutes,
-          true
-        )} - ${formatTime(endHours, endMinutes)}`;
-      // Different Periods
-      else
-        return `${
-          monthNames[startMonth]
-        } ${startDay}, ${startYear} from ${formatTime(
-          startHours,
-          startMinutes
-        )} - ${formatTime(endHours, endMinutes)}`;
-    } else if (startYear === endYear && startMonth === endMonth) {
-      // Same month, different days
-      return `${monthNames[startMonth]} ${startDay} at ${formatTime(
-        startHours,
-        startMinutes
-      )} - ${endDay} at ${formatTime(endHours, endMinutes)}, ${startYear}`;
-    } else if (startYear === endYear) {
-      // Same year, different months
-      return `${monthNames[startMonth]} ${startDay} at ${formatTime(
-        startHours,
-        startMinutes
-      )}, ${startYear} - ${monthNames[endMonth]} ${endDay} at ${formatTime(
-        endHours,
-        endMinutes
-      )}, ${endYear}`;
-    } else {
-      // Different years
-      return `${monthNames[startMonth]} ${startDay} at ${formatTime(
-        startHours,
-        startMinutes
-      )}, ${startYear} - ${monthNames[endMonth]} ${endDay} at ${formatTime(
-        endHours,
-        endMinutes
-      )}, ${endYear}`;
-    }
-  };
 
   return (
     <div>
