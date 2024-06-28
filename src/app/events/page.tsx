@@ -34,22 +34,18 @@ import EventForm from "./components/EventForm";
 
 export default function Events() {
   const [editMode, setEditMode] = useState<boolean>(false);
-  const [event, setEditedEvent] = useState<Event | null>(null);
+  const [eventShort, setEventShort] = useState<EventShort | null>(null);
 
   const [isNewEvent, setIsNewEvent] = useState(false);
 
   const { eventsShort, loading, error, refetchEventShorts } =
     useFetchEventShorts();
 
-  const handleEdit = (event: Event, isNew: boolean) => {
-    setEditedEvent(event);
+  const handleEdit = (event: EventShort | null, isNew: boolean) => {
+    setEventShort(event);
     setIsNewEvent(isNew);
     setEditMode(true);
     console.log("woo");
-    // setEditedEvent({
-    //   ...event,
-    //   category: Array.isArray(event.category) ? event.category : [],
-    // });
   };
 
   const handleDelete = async (eventId: string) => {
@@ -71,7 +67,7 @@ export default function Events() {
 
   const closeEventForm = () => {
     setEditMode(false);
-    setEditedEvent(null);
+    setEventShort(null);
     refetchEventShorts();
   };
 
@@ -218,12 +214,9 @@ export default function Events() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>Actions</DropdownMenuLabel>
               <DropdownMenuItem
-                onClick={async () => {
-                  const fetchedEvent = await fetchEvent(event);
-                  if (fetchedEvent != undefined) {
-                    setEditedEvent(fetchedEvent);
-                    handleEdit(fetchedEvent, false);
-                  }
+                onClick={() => {
+                  setEventShort(event);
+                  handleEdit(event, false);
                 }}
               >
                 Edit
@@ -246,15 +239,13 @@ export default function Events() {
   ];
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="container mx-auto mt-8 max-w-full">
       {/* {JSON.stringify(eventsShort)} */}
 
       <div className="flex flex-col gap-4">
         <div className="flex w-full justify-between">
           <h1 className="text-3xl font-bold">Events</h1>
-          <Button onClick={() => handleEdit(getDefaultEvent(), true)}>
-            Create Event
-          </Button>
+          <Button onClick={() => handleEdit(null, true)}>Create Event</Button>
         </div>
 
         <div className="bg-white">
@@ -262,14 +253,12 @@ export default function Events() {
         </div>
       </div>
 
-      {editMode && event && (
-        <EventForm
-          open={editMode && event != null}
-          eventId={event.id}
-          closeEventForm={closeEventForm}
-          isNewEvent={isNewEvent}
-        ></EventForm>
-      )}
+      <EventForm
+        open={editMode}
+        eventId={eventShort?.id ?? ""}
+        closeEventForm={closeEventForm}
+        isNewEvent={isNewEvent}
+      ></EventForm>
     </div>
   );
 }
