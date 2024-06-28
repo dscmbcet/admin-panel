@@ -129,23 +129,19 @@ export default function EventForm({
     else setEditedEvent(existingEvent);
   }, [existingEvent, isNewEvent]);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (isNewEvent || (editedEvent !== undefined && editedEvent !== null))
-    return (
-      <Sheet open={open}>
-        <SheetContent className="w-[900px] h-full flex flex-col">
-          <SheetHeader>
-            <SheetTitle>Edit Event</SheetTitle>
-            <SheetDescription>{`Modify your event`}</SheetDescription>
-          </SheetHeader>
-
+  return (
+    <Sheet open={open}>
+      <SheetContent className="w-[900px] h-full flex flex-col">
+        <SheetHeader>
+          <SheetTitle>Edit Event</SheetTitle>
+          <SheetDescription>{`Modify your event`}</SheetDescription>
+        </SheetHeader>
+        {loading ? (
+          <div>Loading...</div>
+        ) : error && editedEvent === null ? (
+          <div>Error: {error}</div>
+        ) : isNewEvent ||
+          (editedEvent !== undefined && editedEvent !== null) ? (
           <div className="w-full flex flex-col flex-grow h-full overflow-scroll">
             <label className="block mb-4">
               <span className="font-bold">Name</span>
@@ -306,24 +302,21 @@ export default function EventForm({
               />
             </label>
           </div>
+        ) : (
+          "null"
+        )}
 
-          <SheetFooter>
-            <div className="flex justify-end gap-2">
-              <Button
-                onClick={(e) => handleSubmit(e, editedEvent!, isNewEvent)}
-              >
-                Save
-              </Button>
-              <Button
-                type="button"
-                variant="secondary"
-                onClick={closeEventForm}
-              >
-                Cancel
-              </Button>
-            </div>
-          </SheetFooter>
-        </SheetContent>
-      </Sheet>
-    );
+        <SheetFooter>
+          <div className="flex justify-end gap-2">
+            <Button onClick={(e) => handleSubmit(e, editedEvent!, isNewEvent)}>
+              Save
+            </Button>
+            <Button type="button" variant="secondary" onClick={closeEventForm}>
+              Cancel
+            </Button>
+          </div>
+        </SheetFooter>
+      </SheetContent>
+    </Sheet>
+  );
 }
