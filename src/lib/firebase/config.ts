@@ -24,7 +24,7 @@ const firestore = getFirestore(firebase_app);
 
 // Connect to Firestore emulator
 if (process.env.NODE_ENV === "development" && currentMode === mode.EMULATOR) {
-  connectFirestoreEmulator(firestore, "localhost", 8080); // Change port if necessary
+  connectFirestoreEmulator(firestore, "localhost", 8081); // Change port if necessary
 }
 
 export default firebase_app;
