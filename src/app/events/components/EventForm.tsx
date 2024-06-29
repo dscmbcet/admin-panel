@@ -94,8 +94,6 @@ export default function EventForm({
       const eventRef = doc(db, "events", isNewEvent ? newId : event!.id);
       const shortEventRef = doc(db, "data", "events");
 
-      console.log(JSON.stringify(event?.schedule));
-
       // Update event with new data
       if (isNewEvent === true) {
         await setDoc(eventRef, { ...event, id: newId });
@@ -122,11 +120,13 @@ export default function EventForm({
 
   const { event: existingEvent, loading, error } = useFetchEvent(eventId || "");
 
-  const [editedEvent, setEditedEvent] = useState<Event | null>(existingEvent);
+  const [editedEvent, setEditedEvent] = useState<Event | null>(null);
 
   useEffect(() => {
     if (isNewEvent) setEditedEvent(getDefaultEvent());
-    else setEditedEvent(existingEvent);
+    else {
+      setEditedEvent(existingEvent);
+    }
   }, [existingEvent, isNewEvent]);
 
   return (
@@ -143,6 +143,7 @@ export default function EventForm({
         ) : isNewEvent ||
           (editedEvent !== undefined && editedEvent !== null) ? (
           <div className="w-full flex flex-col flex-grow h-full overflow-scroll">
+            {JSON.stringify(editedEvent?.schedule, null, 2)}
             <label className="block mb-4">
               <span className="font-bold">Name</span>
               <Input
@@ -206,9 +207,17 @@ export default function EventForm({
             </label>
             {editedEvent!.schedule?.length ?? "nope"}
             {editedEvent!.name}
+            {JSON.stringify(
+              editedEvent!.schedule.map((schedule) => schedule.name)
+            )}
+            {JSON.stringify(
+              existingEvent!.schedule.map((schedule) => schedule.name)
+            )}
+            {"wowXX"}
 
             <ScheduleField
-              schedule={editedEvent!.schedule}
+              key={editedEvent!.id + Date.now().toString()}
+              schedule={editedEvent!.schedule ?? []}
               getSchedule={(schedule) => {
                 setEditedEvent({
                   ...editedEvent!,

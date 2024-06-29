@@ -14,7 +14,7 @@ import { EventSchedule } from "@/models/event/event-schedule";
 import getDateString from "@/utils/date-string";
 import { Label } from "@radix-ui/react-dropdown-menu";
 import { Edit2, GripVertical } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ScheduleItem {
   item: EventSchedule;
@@ -22,37 +22,45 @@ interface ScheduleItem {
 }
 
 interface ScheduleProps {
+  key: string;
   schedule: EventSchedule[];
   getSchedule: (schedule: EventSchedule[]) => void;
 }
 
 export default function ScheduleField({
+  key,
   schedule,
   getSchedule,
 }: ScheduleProps) {
-  console.log(schedule);
   const [editedSchedule, setEditedSchedule] = useState<ScheduleItem[]>(
-    schedule !== undefined
-      ? schedule.map((item, index) => {
-          return { item: item, id: index.toString() };
-        })
-      : []
+    schedule.map((scheduleItem, index) => {
+      return {
+        id: index.toString(),
+        item: scheduleItem,
+      };
+    })
   );
+
+  useEffect(() => {
+    const newSchedule = editedSchedule.map((scheduleItem) => scheduleItem.item);
+
+    if (JSON.stringify(schedule) !== JSON.stringify(newSchedule)) {
+      getSchedule(newSchedule);
+    }
+  }, [editedSchedule, getSchedule, schedule]);
 
   const [showSchedule, setShowSchedule] = useState(false);
 
   function addSchedule(scheduleItem: EventSchedule, id?: string) {
-    console.log(id);
-    setEditedSchedule(
-      [
-        ...editedSchedule.filter((item) => item.id != id),
-        {
-          item: scheduleItem,
-          id: id ?? editedSchedule.length.toString(),
-        },
-      ].sort((item_a, item_b) => Number(item_a.id) - Number(item_b.id))
-    );
-    console.log(editedSchedule);
+    const newSchedule = [
+      ...editedSchedule.filter((item) => item.id != id),
+      {
+        item: scheduleItem,
+        id: id ?? editedSchedule.length.toString(),
+      },
+    ].sort((item_a, item_b) => Number(item_a.id) - Number(item_b.id));
+
+    setEditedSchedule(newSchedule);
   }
 
   const handleDragEnd = (newOrder: ScheduleItem[]) => {
@@ -81,9 +89,6 @@ export default function ScheduleField({
           schedule={currentSchedule}
           addSchedule={(scheduleItem, id) => {
             addSchedule(scheduleItem, id);
-            getSchedule(
-              editedSchedule.map((scheduleItem) => scheduleItem.item)
-            );
           }}
           closeDialogue={toggleDialogue}
         />
@@ -110,6 +115,7 @@ export default function ScheduleField({
         onMouseEnter={(e) => e.preventDefault()}
       >
         <Sortable
+          key={key}
           items={editedSchedule != undefined ? editedSchedule : []}
           renderItems={(item, index) => (
             <div className="p-4 border grow justify-start flex gap-4 rounded-lg overflow-auto">
