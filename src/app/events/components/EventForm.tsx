@@ -143,7 +143,6 @@ export default function EventForm({
         ) : isNewEvent ||
           (editedEvent !== undefined && editedEvent !== null) ? (
           <div className="w-full flex flex-col flex-grow h-full overflow-scroll">
-            {JSON.stringify(editedEvent?.schedule, null, 2)}
             <label className="block mb-4">
               <span className="font-bold">Name</span>
               <Input
@@ -205,15 +204,6 @@ export default function EventForm({
                 className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
               />
             </label>
-            {editedEvent!.schedule?.length ?? "nope"}
-            {editedEvent!.name}
-            {JSON.stringify(
-              editedEvent!.schedule.map((schedule) => schedule.name)
-            )}
-            {JSON.stringify(
-              existingEvent!.schedule.map((schedule) => schedule.name)
-            )}
-            {"wowXX"}
 
             <ScheduleField
               key={editedEvent!.id + Date.now().toString()}
