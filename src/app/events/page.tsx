@@ -45,7 +45,6 @@ export default function Events() {
     setEventShort(event);
     setIsNewEvent(isNew);
     setEditMode(true);
-    console.log("woo");
   };
 
   const handleDelete = async (eventId: string) => {
@@ -69,19 +68,6 @@ export default function Events() {
     setEditMode(false);
     setEventShort(null);
     refetchEventShorts();
-  };
-
-  const fetchEvent = async (event: EventShort) => {
-    try {
-      const db = getFirestore(firebase_app);
-      const eventDoc = doc(db, "events", event.id);
-      const querySnapshot = await getDoc(eventDoc);
-      const fetchedEvent = querySnapshot.data() as Event;
-      return fetchedEvent;
-    } catch (error) {
-      // setError("Error fetching events");
-      // setLoading(false);
-    }
   };
 
   if (loading) {
