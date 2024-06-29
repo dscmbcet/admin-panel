@@ -173,37 +173,6 @@ export default function EventForm({
                 className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
               />
             </label>
-            <label className="block mb-4">
-              <span className="font-bold">Start Date</span>
-
-              <DateTimePicker
-                initialDate={new Date(Number(editedEvent?.start_date))}
-                onSelect={(date) =>
-                  handleChange({
-                    target: {
-                      name: "start_date",
-                      valueAsDate: date,
-                    },
-                  } as React.ChangeEvent<HTMLInputElement>)
-                }
-              ></DateTimePicker>
-              <Input
-                type="date"
-                name="start_date"
-                defaultValue={new Date(Number(editedEvent?.start_date))
-                  .toLocaleDateString()
-                  .split("/")
-                  .reverse()
-                  .join("-")}
-                //   value={new Date(Number(editedEvent.start_date))
-                //     .toLocaleDateString()
-                //     .split("/")
-                //     .reverse()
-                //     .join("-")}
-                onChange={handleChange}
-                className="form-input mt-1 block w-full border-gray-300 rounded-md focus:border-blue-400 focus:outline-none"
-              />
-            </label>
 
             <ScheduleField
               key={editedEvent!.id + Date.now().toString()}
@@ -211,6 +180,14 @@ export default function EventForm({
               getSchedule={(schedule) => {
                 setEditedEvent({
                   ...editedEvent!,
+                  start_date:
+                    schedule.length > 0
+                      ? schedule
+                          .map((scheduleItem) => scheduleItem.start_date)
+                          .sort((date_a, date_b) =>
+                            date_a.localeCompare(date_b)
+                          )[0]
+                      : editedEvent!.start_date,
                   schedule: schedule,
                 });
               }}
