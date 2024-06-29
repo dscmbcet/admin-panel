@@ -18,9 +18,14 @@ import { useEffect } from "react";
 interface DateTimePickerProps {
   initialDate?: Date;
   onSelect?: (date: Date) => void;
+  disabledDates?: any;
 }
 
-export function DateTimePicker({ initialDate, onSelect }: DateTimePickerProps) {
+export function DateTimePicker({
+  initialDate,
+  onSelect,
+  disabledDates,
+}: DateTimePickerProps) {
   const [date, setDate] = React.useState<Date>();
 
   useEffect(() => {
@@ -66,6 +71,7 @@ export function DateTimePicker({ initialDate, onSelect }: DateTimePickerProps) {
       <PopoverContent className="w-auto p-0">
         <Calendar
           mode="single"
+          disabled={disabledDates}
           selected={date}
           onSelect={(d) => handleSelect(d)}
           initialFocus
