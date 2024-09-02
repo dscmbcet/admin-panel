@@ -137,7 +137,7 @@ export default function NewScheduleDialogue({
           <Button variant={"outline"} onClick={closeDialogue}>
             Cancel
           </Button>
-          <Button onClick={(e) => handleSubmit(e)}>Save Add</Button>
+          <Button onClick={(e) => handleSubmit(e)}>Save</Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

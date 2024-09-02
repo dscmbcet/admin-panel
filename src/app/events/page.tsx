@@ -28,7 +28,6 @@ import {
 import React from "react";
 import { EventShort } from "@/models/event/event-short";
 
-import getDefaultEvent from "./utils/get-default-event";
 import useFetchEventShorts from "@/hooks/fetch-event-shorts";
 import EventForm from "./components/EventForm";
 
@@ -231,7 +230,7 @@ export default function Events() {
       <div className="flex flex-col gap-4">
         <div className="flex w-full justify-between">
           <h1 className="text-3xl font-bold">Events</h1>
-          <Button onClick={() => handleEdit(null, true)}>Create Event</Button>
+          <Button onClick={() => handleEdit(null, true)}>Add Event</Button>
         </div>
 
         <div className="bg-white">
