@@ -16,6 +16,8 @@ import {
 } from "@/components/ui/sheet";
 import { DateTimePicker } from "@/components/ui/time-picker/date-time-picker";
 import useFetchEvent from "@/hooks/fetch-event";
+import useFetchSkills from "@/hooks/fetch-skills";
+
 import firebase_app from "@/lib/firebase/config";
 
 import titleCase from "@/utils/title-case";
@@ -42,6 +44,7 @@ export default function EventForm({
   closeEventForm,
   isNewEvent,
 }: EventFormProp) {
+  const { skills } = useFetchSkills();
   const skillOptions: EventCategory[] = [
     { label: "Web Dev", id: "web-dev" },
     { label: "Design", id: "design" },
@@ -66,6 +69,20 @@ export default function EventForm({
         ...prevState,
         [name]: values?.map((value) => {
           return { id: value.value, label: value.label };
+        }),
+      }));
+    } else if (name === "skills") {
+      setEditedEvent((prevState: any) => ({
+        ...prevState,
+        [name]: values?.map((value) => {
+          return { id: value.value, title: value.label };
+        }),
+      }));
+    } else if (name === "prerequisites") {
+      setEditedEvent((prevState: any) => ({
+        ...prevState,
+        [name]: values?.map((value) => {
+          return { id: value.value, title: value.label };
         }),
       }));
     } else if (name === "start_date") {
@@ -270,6 +287,70 @@ export default function EventForm({
                     {
                       target: {
                         name: "category",
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>,
+                    options
+                  )
+                }
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Skills Gained</span>
+
+              <MultiSelectDropdown
+                options={Object.values(editedEvent!.skills)
+                  .concat(
+                    skills.filter(
+                      (item2) =>
+                        !Object.values(editedEvent!.skills).some(
+                          (item1) => item1.id === item2.id
+                        )
+                    )
+                  )
+                  .map((option) => {
+                    return { value: option.id, label: option.title };
+                  })}
+                values={Object.values(editedEvent!.skills).map((option) => {
+                  return { value: option.id, label: option.title };
+                })}
+                onValuesChange={(options) =>
+                  handleChange(
+                    {
+                      target: {
+                        name: "skills",
+                      },
+                    } as React.ChangeEvent<HTMLInputElement>,
+                    options
+                  )
+                }
+              />
+            </label>
+            <label className="block mb-4">
+              <span className="font-bold">Prerequisite Skills</span>
+
+              <MultiSelectDropdown
+                options={Object.values(editedEvent!.prerequisites)
+                  .concat(
+                    skills.filter(
+                      (item2) =>
+                        !Object.values(editedEvent!.prerequisites).some(
+                          (item1) => item1.id === item2.id
+                        )
+                    )
+                  )
+                  .map((option) => {
+                    return { value: option.id, label: option.title };
+                  })}
+                values={Object.values(editedEvent!.prerequisites).map(
+                  (option) => {
+                    return { value: option.id, label: option.title };
+                  }
+                )}
+                onValuesChange={(options) =>
+                  handleChange(
+                    {
+                      target: {
+                        name: "prerequisites",
                       },
                     } as React.ChangeEvent<HTMLInputElement>,
                     options
